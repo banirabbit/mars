@@ -1,0 +1,108 @@
+# Multi-Agent API Recommendation System Configuration
+# 多智能体API推荐系统配置文件
+
+# Model Configuration / 模型配置
+model:
+  # Embedding model path (relative to project root) / 嵌入模型路径（相对于项目根目录）
+  embed_model_path: "src/embedder/finetuned_bge_singlegpu_2025-07-07_18-47"
+  
+  # Reranking model name / 重排序模型名称
+  rerank_model_name: "BAAI/bge-reranker-v2-m3"
+  
+  # API similarity model name / API相似度模型名称  
+  api_embed_model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  
+  # Model parameters / 模型参数
+  trust_remote_code: true
+  show_progress: true
+
+# LLM Configuration for Multi-Agent Recommendation / 多智能体推荐的LLM配置
+llm:
+  # API base URL / API基础URL
+  base_url: "http://192.168.1.101:30111/v1"
+  
+  # API key / API密钥
+  api_key: "loopinnetwork"
+  
+  # Model name / 模型名称
+  model_name: "Qwen2.5-14B-Instruct"
+  
+  # Alternative configuration (DeepSeek) / 备选配置（DeepSeek）
+  # base_url: "https://api.deepseek.com"
+  # api_key: "sk-af760815de5848f88865e834b9081a33"
+  # model_name: "deepseek-chat"
+  
+  # Max retry count for recommendation / 推荐最大重试次数
+  max_retry_count: 5
+  
+  # Enable stream response / 启用流式响应
+  stream: false
+
+# Retrieval Configuration / 检索配置
+retrieval:
+  # Initial retrieval count / 初始检索数量
+  initial_k: 100
+  
+  # Reranking top N / 重排序前N个
+  rerank_top_n: 90
+  
+  # Final API limit / 最终API限制数量
+  final_api_limit: 50
+  
+  # Similarity-based top N / 基于相似度的前N个
+  similarity_top_n: 10
+  
+  # Ordered APIs limit / 有序API限制数量
+  ordered_apis_limit: 40
+  
+  # BM25 parameters / BM25参数
+  bm25_k1: 1.5
+  bm25_b: 0.75
+  
+  # Ensemble weights / 集成权重
+  bm25_weight: 0.5157
+  vector_weight: 0.4843
+
+# File Paths Configuration / 文件路径配置
+paths:
+  # Vector database directory / 向量数据库目录
+  vectordb_dir: "data/vector_db"
+  
+  # Prompt template file / 提示模板文件
+  prompt_file: "prompt/qwen_best.txt"
+  
+  # Data files / 数据文件
+  mashup_data_path: "data/origin/active_mashups_data.txt"
+  api_data_path: "data/origin/active_apis_data.txt"
+  train_data_path: "data/rewrite/seed42/train_rewrite_data1202.json"
+  test_data_path: "data/rewrite/seed42/test_rewrite_data1202.json"
+  
+  # Output files / 输出文件
+  answer_cache_file: "output/rag_cache.json"
+  log_file: "logs/evaluation.json"
+
+# Evaluation Configuration / 评估配置
+evaluation:
+  # Maximum retry attempts / 最大重试次数
+  max_retry_attempts: 15
+  
+  # Minimum hallucination threshold / 最小幻觉阈值
+  min_hallucination_threshold: 1
+  
+  # NDCG calculation parameter / NDCG计算参数
+  ndcg_k: 10
+  
+  # LLM prediction limit / LLM预测限制
+  llm_predict_limit: 10
+
+# System Configuration / 系统配置
+system:
+  # Enable debug mode / 启用调试模式
+  debug: false
+  
+  # Number of worker threads / 工作线程数
+  num_workers: 4
+  
+  # Cache settings / 缓存设置
+  enable_cache: true
+  cache_ttl: 3600  # seconds / 秒

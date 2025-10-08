@@ -1,0 +1,147 @@
+Service recommendation refers to analyzing and recommending appropriate services or functionalities based on user needs or a specific application scenario. These services are typically provided in the form of APIs (Application Programming Interfaces). Your task, as a Mashup developer, is to analyze the Mashup's description, identify its functional requirements, and select a combination of APIs from the provided related_apis.
+Example mashups and their associated APIs are as follows:
+{
+    "title": "Mashup: Development with WizIQ Virtual Classroom API",
+    "tags": [],
+    "description": "We do with WizIQ Virtual Classroom API:\nIntegration with WizIQ Virtual Classroom API\nCustom Software development with WizIQ Virtual Classroom API\nMobile Application development with WizIQ Virtual Classroom API\nSupport, Maintenance & Migration for WizIQ Virtual Classroom API",
+    "related_apis": [
+        {
+            "title": "WizIQ Virtual Classroom API MASTER RECORD",
+            "tags": [
+                "Education",
+                "Training"
+            ],
+            "description": "WizIQ offers a rich set of intuitive tools for online teaching including virtual classroom, student recruitment tools, and payment collection mechanisms. Developers can use the WizIQ API to integrate WizIQ with their website, CMS or Learning Management System. Functionality exposed by the API includes conducting live classes to multiple users, taking attendance, uploading and managing content and more. The API uses RESTful calls and responses are formatted in XML.",
+        }
+    ],
+    "categories": [
+        "Education",
+        "Training"
+    ],
+},
+{
+    "title": "Mashup: PrintCentral and Box.net",
+    "tags": [],
+    "description": "PrintCentral is a mobile printing app for the iPhone. Using its integration with Box.net, users are now able to access and print their Box files from within PrintCentral.",
+    "related_apis": [
+        {
+            "title": "Box API MASTER RECORD",
+            "tags": [
+                "Content",
+                "Collaboration",
+                "Content Management",
+                "Enterprise",
+                "Security",
+                "Storage"
+            ],
+            "description": "Box is a modern content management platform that transforms how organizations work and collaborate to achieve results faster.Box Platform provides content APIs to build secure content experiences in custom apps. With Box Platform, organizations can bring content management and collaboration services to their own custom apps or build custom integrations with Box.",
+        }
+    ],
+    "categories": [
+        "Printing",
+        "Mobile",
+        "Storage"
+    ],
+},
+{
+    "title": "Mashup: Where Is The Path",
+    "tags": [],
+    "description": "Spilt screen with half OS OpenSpace API and half Google Maps API.",
+    "related_apis": [
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer"
+            ],
+            "description": "[This API is no longer available. Google Maps' services have been split into multiple APIs, including the Static Maps API, Street View Image API, Directions APIs, Distance Matrix API, Elevation API, Geocoding API, Geolocation API, Places API, Roads API, and Time Zone API.This page is maintained purely for historical and research purposes.]The Google Maps API allow for the embedding of Google Maps onto web pages of outside developers, using a simple JavaScript interface or a Flash interface. It is designed to work on both mobile devices as well as traditional desktop browser applications. The API includes language localization for over 50 languages, region localization and geocoding, and has mechanisms for enterprise developers who want to utilize the Google Maps API within an intranet. The API HTTP services can be accessed over a secure (HTTPS) connection by Google Maps API Premier customers.",
+        },
+        {
+            "title": "Ordnance Survey Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "England",
+                "Viewer"
+            ],
+            "description": "The Maps API allows visualization of different maps of Great Britain, and be displayed in approved third-party applications. From their site: OS OpenSpace is a free Ordnance Survey service that allows you to embed Ordnance Survey maps covering England, Scotland and Wales in your web apps. Place any kind of information that has a geographic reference on top of Ordnance Survey maps. Ordnance Survey is Great Britain's national mapping agency. The OS OpenSpace API is a piece of software code you can embed in your web application that provides all the necessary functionality to interact with a map, like panning, zooming in and out, and adding markers and polygons.",
+
+        }
+    ],
+    "categories": [
+        "England",
+        "Mapping"
+    ],
+},
+To ensure accurate recommendations, follow these steps to think step by step:
+
+1. Analyze Functional Requirements: Carefully read the Mashup description and extract the key functional needs.
+2. Filter APIs: Review the description and tags of each API in related_apis to determine if it fulfills the extracted functional requirements. Select only APIs that meet the needs.
+3. Retrieve Titles: For each matching API, extract its title field and include it in the final output.
+4. Ensure Coverage: Verify that the selected APIs comprehensively cover all the Mashup's functional requirements. Combine multiple APIs if necessary.
+5. Return 10 APIs: The output list of APIs must always contain exactly 10 entries. .
+Output Format:
+The output should be a valid JSON object containing two keys: mashup and related_apis.
+The value of mashup must exactly match the description provided in the input.
+The related_apis key must contain a list of exactly 10 items, each representing the title of a selected API. No empty strings or placeholders.
+Only select titles from the provided related_apis list. Do not create or modify any titles.
+Task Input Structure:
+{
+  "mashup": "Description of the Mashup's functional requirements",
+  "related_apis": [
+    {"title": "API Title 1", "tags": ["Tag1", "Tag2"], "description": "API functionality description"},
+    {"title": "API Title 2", "tags": ["Tag3", "Tag4"], "description": "API functionality description"},
+    ...
+    {"title": "API Title 20", "tags": ["Tag5", "Tag6"], "description": "API functionality description"},
+  ]
+}
+Expected Output:
+```json
+{
+  "mashup": "Description of the Mashup's functional requirements",
+  "related_apis": ["API Title 1", "API Title 2", "API Title 8", "API Title 9", "API Title 12", "API Title 18", "API Title 15", "API Title 10", "API Title 5", "API Title 4"]
+}
+```
+### Example:
+Example input:
+{
+  "mashup": "description:Spilt screen with half OS OpenSpace API and half Google Maps API, categories:England,Mapping",
+  "candidate_apis": [
+    {
+        "title": "Google Maps API MASTER RECORD",
+        "tags": [
+            "Mapping",
+            "Viewer"
+        ],
+        "description": "[This API is no longer available. Google Maps' services have been split into multiple APIs, including the Static Maps API, Street View Image API, Directions APIs, Distance Matrix API, Elevation API, Geocoding API, Geolocation API, Places API, Roads API, and Time Zone API.This page is maintained purely for historical and research purposes.]The Google Maps API allow for the embedding of Google Maps onto web pages of outside developers, using a simple JavaScript interface or a Flash interface. It is designed to work on both mobile devices as well as traditional desktop browser applications. The API includes language localization for over 50 languages, region localization and geocoding, and has mechanisms for enterprise developers who want to utilize the Google Maps API within an intranet. The API HTTP services can be accessed over a secure (HTTPS) connection by Google Maps API Premier customers."
+    },
+    {
+        "title": "WizIQ Virtual Classroom API MASTER RECORD",
+        "tags": [
+            "Education",
+            "Training"
+        ],
+        "description": "WizIQ offers a rich set of intuitive tools for online teaching including virtual classroom, student recruitment tools, and payment collection mechanisms. Developers can use the WizIQ API to integrate WizIQ with their website, CMS or Learning Management System. Functionality exposed by the API includes conducting live classes to multiple users, taking attendance, uploading and managing content and more. The API uses RESTful calls and responses are formatted in XML.",
+    },
+    {
+        "title": "Ordnance Survey Maps API MASTER RECORD",
+        "tags": [
+            "Mapping",
+            "England",
+            "Viewer"
+        ],
+        "description": "The Maps API allows visualization of different maps of Great Britain, and be displayed in approved third-party applications. From their site: OS OpenSpace is a free Ordnance Survey service that allows you to embed Ordnance Survey maps covering England, Scotland and Wales in your web apps. Place any kind of information that has a geographic reference on top of Ordnance Survey maps. Ordnance Survey is Great Britain's national mapping agency. The OS OpenSpace API is a piece of software code you can embed in your web application that provides all the necessary functionality to interact with a map, like panning, zooming in and out, and adding markers and polygons.",
+    },
+    ]
+}
+Example Output:
+```json
+{
+  "mashup": "description:Spilt screen with half OS OpenSpace API and half Google Maps API, categories:England,Mapping",
+  "related_apis": ["Google Maps API MASTER RECORD", "Ordnance Survey Maps API MASTER RECORD", "", "", "", "", "", "", "", ""]
+}
+```
+Output Requirements:
+The JSON output must strictly include only the mashup and related_apis fields.
+The related_apis list must always have exactly 10 items.Selecting APIs only from the provided list of related_apis.
+Avoid any additional comments or unnecessary text in the output.
+### Actual Input:

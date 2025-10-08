@@ -1,0 +1,153 @@
+Service recommendation refers to analyzing and recommending appropriate services or functionalities based on user needs or a specific application scenario. These services are typically provided in the form of APIs (Application Programming Interfaces). Your task, as a Mashup developer, is to analyze the Mashup's description, identify its functional requirements, and select a combination of APIs from the provided related_apis.
+Example mashups and their associated APIs are as follows:
+{
+    "title": "Mashup: Development with WizIQ Virtual Classroom API",
+    "tags": [],
+    "description": "We do with WizIQ Virtual Classroom API:\nIntegration with WizIQ Virtual Classroom API\nCustom Software development with WizIQ Virtual Classroom API\nMobile Application development with WizIQ Virtual Classroom API\nSupport, Maintenance & Migration for WizIQ Virtual Classroom API",
+    "related_apis": [
+        {
+            "title": "WizIQ Virtual Classroom API MASTER RECORD",
+            "tags": [
+                "Education",
+                "Training"
+            ],
+            "description": "WizIQ offers a rich set of intuitive tools for online teaching including virtual classroom, student recruitment tools, and payment collection mechanisms. Developers can use the WizIQ API to integrate WizIQ with their website, CMS or Learning Management System. Functionality exposed by the API includes conducting live classes to multiple users, taking attendance, uploading and managing content and more. The API uses RESTful calls and responses are formatted in XML.",
+        }
+    ],
+    "categories": [
+        "Education",
+        "Training"
+    ],
+},
+{
+    "title": "Mashup: PrintCentral and Box.net",
+    "tags": [],
+    "description": "PrintCentral is a mobile printing app for the iPhone. Using its integration with Box.net, users are now able to access and print their Box files from within PrintCentral.",
+    "related_apis": [
+        {
+            "title": "Box API MASTER RECORD",
+            "tags": [
+                "Content",
+                "Collaboration",
+                "Content Management",
+                "Enterprise",
+                "Security",
+                "Storage"
+            ],
+            "description": "Box is a modern content management platform that transforms how organizations work and collaborate to achieve results faster.Box Platform provides content APIs to build secure content experiences in custom apps. With Box Platform, organizations can bring content management and collaboration services to their own custom apps or build custom integrations with Box.",
+        }
+    ],
+    "categories": [
+        "Printing",
+        "Mobile",
+        "Storage"
+    ],
+},
+{
+    "title": "Mashup: Where Is The Path",
+    "tags": [],
+    "description": "Spilt screen with half OS OpenSpace API and half Google Maps API.",
+    "related_apis": [
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer"
+            ],
+            "description": "[This API is no longer available. Google Maps' services have been split into multiple APIs, including the Static Maps API, Street View Image API, Directions APIs, Distance Matrix API, Elevation API, Geocoding API, Geolocation API, Places API, Roads API, and Time Zone API.This page is maintained purely for historical and research purposes.]The Google Maps API allow for the embedding of Google Maps onto web pages of outside developers, using a simple JavaScript interface or a Flash interface. It is designed to work on both mobile devices as well as traditional desktop browser applications. The API includes language localization for over 50 languages, region localization and geocoding, and has mechanisms for enterprise developers who want to utilize the Google Maps API within an intranet. The API HTTP services can be accessed over a secure (HTTPS) connection by Google Maps API Premier customers.",
+        },
+        {
+            "title": "Ordnance Survey Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "England",
+                "Viewer"
+            ],
+            "description": "The Maps API allows visualization of different maps of Great Britain, and be displayed in approved third-party applications. From their site: OS OpenSpace is a free Ordnance Survey service that allows you to embed Ordnance Survey maps covering England, Scotland and Wales in your web apps. Place any kind of information that has a geographic reference on top of Ordnance Survey maps. Ordnance Survey is Great Britain's national mapping agency. The OS OpenSpace API is a piece of software code you can embed in your web application that provides all the necessary functionality to interact with a map, like panning, zooming in and out, and adding markers and polygons.",
+
+        }
+    ],
+    "categories": [
+        "England",
+        "Mapping"
+    ],
+},
+To ensure accurate recommendations, follow these steps to think step by step:
+1. **Exhaustive Functional Requirements Extraction**: Identify *every* explicit and implicit functional requirement within the Mashup description, including but not limited to core operations, data types, user roles, environmental dependencies, integration points, validation logic, error handling protocols, concurrency expectations, and performance benchmarks across all conceivable usage scenarios. Document these requirements in a structured format for traceability.
+2. **Advanced Semantic API Alignment with Contextual Reasoning**: For each API in `related_apis`, conduct a deep semantic analysis that transcends surface-level keywords. Interpret the API’s purpose by analyzing its title, description, tags, endpoint structure, parameter semantics, response schema, authentication mechanism, rate limits, versioning practices, and real-world usage patterns. Map inferred capabilities directly to the Mashup’s functional and technical context for accurate alignment.
+3. **Evidence-Based Relevance Filtering with Explicit Justification**: Apply strict relevance criteria—exclude APIs with partial, speculative, or loosely associated functionality. Only include APIs where there is a clear, documented mapping between the Mashup's extracted requirements and the API’s defined features. For every selected API, provide a concise rationale linking it to one or more specific workflows, use cases, or functional components identified during requirements analysis.
+4. **Multi-Dimensional Prioritization Framework**: When multiple APIs are viable candidates, rank them using a weighted scoring system based on: completeness of feature coverage, fidelity to intended use case, API maturity (version stability, maintenance frequency), ecosystem robustness (tooling, SDKs, community size), documentation clarity, integration complexity, latency performance, and reliability indicators. Prioritize APIs that deliver optimal balance between capability and practicality for the Mashup’s scope.
+5. **Holistic Workflow Composition and Interoperability Validation**: Ensure the final API set forms a fully integrated, functionally cohesive architecture capable of supporting the entire logic flow of the Mashup. Where no single API meets a full requirement, strategically combine complementary APIs to fill functional gaps. Validate logical chaining, data compatibility, and interoperability between APIs to prevent workflow fragmentation or integration bottlenecks.
+6. **Precise Title Matching with Source Data Fidelity**: Return only exact, verbatim API titles as listed in the provided `related_apis` dataset. No alterations, summaries, abbreviations, or reformulations are permitted. Maintain 100% fidelity to source titles to ensure unambiguous identification and attribution.
+7. **Guaranteed 10 High-Value Recommendations with Adaptive Expansion**: Deliver exactly 10 API recommendations. If fewer than 10 APIs meet direct relevance criteria, cautiously expand selection to include secondary or peripheral APIs that still offer tangible, justifiable value to the Mashup’s extended functionality. Avoid speculative, redundant, or marginally relevant additions—each entry must clearly enhance the overall solution design.
+8. **Comprehensive Deduplication and Redundancy Elimination**: Remove all duplicate, overlapping, or semantically equivalent APIs from the recommendation list. Ensure each included API delivers a distinct and essential function within the Mashup. Exclude APIs based solely on thematic proximity, keyword repetition, or superficial similarity without functional differentiation.
+9. **Real-World Feasibility Screening**: Filter out APIs that, while conceptually aligned, pose practical integration challenges due to restrictive licensing terms, inadequate documentation, deprecated status, or minimal community engagement—unless such constraints are explicitly acceptable per the Mashup description. Focus on APIs with proven viability for production deployment.
+10. **Dynamic Consistency Verification and Iterative Refinement**: Continuously validate API selections against evolving interpretations of the Mashup description throughout the evaluation process. Use cross-checking mechanisms and feedback loops to refine selections iteratively, ensuring persistent alignment with requirements, accuracy in matching, and completeness of coverage prior to finalizing the output.
+11. **Traceable Mapping of Requirements to API Functions**: Provide a lightweight traceability matrix or mapping table that links each selected API to the specific requirement(s) it satisfies. This ensures transparency, supports auditability, and reinforces the justification framework behind each recommendation.
+12. **Error-Resilient Output Structuring and Formatting Enforcement**: Format the final output strictly according to predefined structural rules. Ensure recommendations are returned in a clean, consistent list with no markdown, explanations, or additional commentary—only the numbered list of 10 exact API titles as they appear in the source dataset.
+Output Format:
+The output should be a valid JSON object containing two keys: mashup and related_apis.
+The value of mashup must exactly match the description provided in the input.
+The related_apis key must contain a list of exactly 10 items, each representing the title of a selected API. No empty strings or placeholders.
+Only select titles from the provided related_apis list. Do not create or modify any titles.
+Task Input Structure:
+{
+  "mashup": "Description of the Mashup's functional requirements",
+  "related_apis": [
+    {"title": "API Title 1", "tags": ["Tag1", "Tag2"], "description": "API functionality description"},
+    {"title": "API Title 2", "tags": ["Tag3", "Tag4"], "description": "API functionality description"},
+    ...
+    {"title": "API Title 20", "tags": ["Tag5", "Tag6"], "description": "API functionality description"},
+  ]
+}
+Expected Output:
+```json
+{
+  "mashup": "Description of the Mashup's functional requirements",
+  "related_apis": ["API Title 1", "API Title 2", "API Title 8", "API Title 9", "API Title 12", "API Title 18", "API Title 15", "API Title 10", "API Title 5", "API Title 4"]
+}
+```
+### Example:
+Example input:
+{
+  "mashup": "description:Spilt screen with half OS OpenSpace API and half Google Maps API, categories:England,Mapping",
+  "candidate_apis": [
+    {
+        "title": "Google Maps API MASTER RECORD",
+        "tags": [
+            "Mapping",
+            "Viewer"
+        ],
+        "description": "[This API is no longer available. Google Maps' services have been split into multiple APIs, including the Static Maps API, Street View Image API, Directions APIs, Distance Matrix API, Elevation API, Geocoding API, Geolocation API, Places API, Roads API, and Time Zone API.This page is maintained purely for historical and research purposes.]The Google Maps API allow for the embedding of Google Maps onto web pages of outside developers, using a simple JavaScript interface or a Flash interface. It is designed to work on both mobile devices as well as traditional desktop browser applications. The API includes language localization for over 50 languages, region localization and geocoding, and has mechanisms for enterprise developers who want to utilize the Google Maps API within an intranet. The API HTTP services can be accessed over a secure (HTTPS) connection by Google Maps API Premier customers."
+    },
+    {
+        "title": "WizIQ Virtual Classroom API MASTER RECORD",
+        "tags": [
+            "Education",
+            "Training"
+        ],
+        "description": "WizIQ offers a rich set of intuitive tools for online teaching including virtual classroom, student recruitment tools, and payment collection mechanisms. Developers can use the WizIQ API to integrate WizIQ with their website, CMS or Learning Management System. Functionality exposed by the API includes conducting live classes to multiple users, taking attendance, uploading and managing content and more. The API uses RESTful calls and responses are formatted in XML.",
+    },
+    {
+        "title": "Ordnance Survey Maps API MASTER RECORD",
+        "tags": [
+            "Mapping",
+            "England",
+            "Viewer"
+        ],
+        "description": "The Maps API allows visualization of different maps of Great Britain, and be displayed in approved third-party applications. From their site: OS OpenSpace is a free Ordnance Survey service that allows you to embed Ordnance Survey maps covering England, Scotland and Wales in your web apps. Place any kind of information that has a geographic reference on top of Ordnance Survey maps. Ordnance Survey is Great Britain's national mapping agency. The OS OpenSpace API is a piece of software code you can embed in your web application that provides all the necessary functionality to interact with a map, like panning, zooming in and out, and adding markers and polygons.",
+    },
+    ]
+}
+Example Output:
+```json
+{
+  "mashup": "description:Spilt screen with half OS OpenSpace API and half Google Maps API, categories:England,Mapping",
+  "related_apis": ["Google Maps API MASTER RECORD", "Ordnance Survey Maps API MASTER RECORD", "", "", "", "", "", "", "", ""]
+}
+```
+Output Requirements:
+The JSON output must strictly include only the mashup and related_apis fields.
+The related_apis list must always have exactly 10 items.Selecting APIs only from the provided list of related_apis.
+Avoid any additional comments or unnecessary text in the output.
+### Actual Input:

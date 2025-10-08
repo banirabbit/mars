@@ -1,0 +1,2309 @@
+[
+    [
+        {
+            "title": "Twilio API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Cloud",
+                "Text-to-Speech",
+                "Voice",
+                "Webhooks",
+                "RESTful",
+                "Scalability",
+                "Reliability",
+                "Pay-As-You-Go"
+            ]
+        },
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Historical",
+                "JavaScript",
+                "Localization",
+                "Integration",
+                "API"
+            ]
+        },
+        {
+            "title": "Tropo Scripting API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Cloud",
+                "Messaging",
+                "Web Integration",
+                "Real-Time Communication",
+                "Voice Recognition",
+                "Geolocation",
+                "Mobile",
+                "Enterprise",
+                "USA",
+                "International",
+                "Multiplatform"
+            ]
+        },
+        {
+            "title": "Twilio SMS API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Messaging",
+                "USA",
+                "RESTful",
+                "API",
+                "SMS",
+                "Cloud"
+            ]
+        },
+        {
+            "title": "Twitter API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "Micro-blogging",
+                "RESTful",
+                "API Split",
+                "Historical Reference",
+                "Data Access",
+                "Syndication",
+                "Search",
+                "Trends",
+                "API Formats"
+            ]
+        },
+        {
+            "title": "World Weather Online API MASTER RECORD",
+            "tags": [
+                "Historical Data",
+                "Location-based Data",
+                "Weather Forecasting",
+                "API",
+                "Localization",
+                "Discontinued"
+            ]
+        },
+        {
+            "title": "Weather Channel API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Real-Time",
+                "Forecast",
+                "Integration",
+                "IBM Cloud",
+                "The Weather Company"
+            ]
+        },
+        {
+            "title": "Google App Engine API MASTER RECORD",
+            "tags": [
+                "Cloud Computing",
+                "Web Development",
+                "Infrastructure",
+                "Scalability",
+                "Web Hosting",
+                "Testing",
+                "Authentication",
+                "Email Services"
+            ]
+        },
+        {
+            "title": "Flickr API MASTER RECORD",
+            "tags": [
+                "Photography",
+                "Media Sharing",
+                "REST",
+                "SOAP",
+                "XML-RPC",
+                "JSON",
+                "PHP",
+                "API Libraries"
+            ]
+        },
+        {
+            "title": "Heroku API MASTER RECORD",
+            "tags": [
+                "Cloud",
+                "Application Development",
+                "Hosting"
+            ]
+        },
+        {
+            "title": "Google Latitude API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Location Services",
+                "Social Media",
+                "Mapping",
+                "API Integration",
+                "Google Services",
+                "Geospatial Data"
+            ]
+        },
+        {
+            "title": "Google Calendar API MASTER RECORD",
+            "tags": [
+                "Calendars",
+                "Events",
+                "GData",
+                "Web Integration",
+                "Event Management",
+                "API Integration"
+            ]
+        },
+        {
+            "title": "OpenWeatherMap API MASTER RECORD",
+            "tags": [
+                "additional",
+                "relevant",
+                "tags"
+            ]
+        },
+        {
+            "title": "Panoramio API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Geolocation",
+                "Web Development",
+                "REST",
+                "JSON",
+                "Deprecated"
+            ]
+        },
+        {
+            "title": "YouTube API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Media",
+                "Web",
+                "Authentication",
+                "Upload",
+                "Feed",
+                "RESTful",
+                "XML"
+            ]
+        },
+        {
+            "title": "Facebook API MASTER RECORD",
+            "tags": [
+                "Social Networking",
+                "RESTful",
+                "JSON",
+                "Webhooks",
+                "Profile Integration",
+                "Friend Data",
+                "Event Data",
+                "Group Data",
+                "Photo Data",
+                "Page Data",
+                "Privacy Settings"
+            ]
+        },
+        {
+            "title": "Amazon Product Advertising API MASTER RECORD",
+            "tags": [
+                "E-commerce",
+                "Product",
+                "Advertising",
+                "AffiliateMarketing",
+                "REST",
+                "SOAP",
+                "Integration"
+            ]
+        },
+        {
+            "title": "GeoNames API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Database",
+                "Reference",
+                "Mapping",
+                "Postal",
+                "Weather",
+                "RESTful",
+                "Web Services",
+                "Free Download",
+                "User Contribution",
+                "Service Level Agreement",
+                "Premium Services"
+            ]
+        },
+        {
+            "title": "Microsoft Bing Maps API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Viewer",
+                "Commercial",
+                "Enterprise",
+                "SOAP",
+                "Integration",
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "Google Gadgets API MASTER RECORD",
+            "tags": [
+                "Widgets",
+                "Mini-applications",
+                "Personalization",
+                "API",
+                "Web Development"
+            ]
+        },
+        {
+            "title": "AerisWeather API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "API",
+                "WeatherForecast",
+                "RESTful",
+                "JSON",
+                "JSONP",
+                "GeographicData",
+                "StormReports",
+                "Mapping",
+                "Integration",
+                "Enterprise",
+                "Localization"
+            ]
+        },
+        {
+            "title": "AccuWeather API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "API",
+                "WeatherAPI",
+                "Forecast",
+                "CurrentConditions",
+                "WeatherData",
+                "IntegrationAPI"
+            ]
+        },
+        {
+            "title": "Microsoft Bing API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Monetization",
+                "RESTful",
+                "JSON",
+                "SOAP",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Yahoo Query Language GraphQL API MASTER RECORD",
+            "tags": [
+                "GraphQL",
+                "Query",
+                "Database",
+                "Data"
+            ]
+        },
+        {
+            "title": "Yahoo Weather API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Forecast",
+                "API",
+                "Integration",
+                "Data"
+            ]
+        },
+        {
+            "title": "SpokenBuzz API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Voicemail",
+                "CallForwarding",
+                "CallScreening",
+                "OutboundCalling",
+                "APIIntegration"
+            ]
+        },
+        {
+            "title": "Eventful API MASTER RECORD",
+            "tags": [
+                "Events",
+                "Calendars",
+                "Guides",
+                "Music",
+                "REST",
+                "Aggregation",
+                "Web Applications"
+            ]
+        },
+        {
+            "title": "Google Cloud Translation API MASTER RECORD",
+            "tags": [
+                "Translation",
+                "Cloud",
+                "Language",
+                "Machine Learning",
+                "Customization",
+                "Batch Processing",
+                "Asynchronous",
+                "High Volume",
+                "Global Accessibility"
+            ]
+        },
+        {
+            "title": "Google Maps Places API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Places Search",
+                "Photos",
+                "Autocomplete",
+                "API Key Authentication",
+                "JSON",
+                "XML"
+            ]
+        },
+        {
+            "title": "Hoiio Voice API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Voice",
+                "Text-to-Speech",
+                "Cloud Computing",
+                "Scalability",
+                "Pay-Per-Use"
+            ]
+        },
+        {
+            "title": "MyVox API MASTER RECORD",
+            "tags": [
+                "Voice",
+                "Telephony",
+                "Integration",
+                "Voice-Enabled",
+                "Mobile",
+                "Web",
+                "Telecom",
+                "API"
+            ]
+        },
+        {
+            "title": "Google Picasa API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Albums",
+                "WebServices",
+                "DataAPI",
+                "Migration",
+                "GDataFeeds"
+            ]
+        },
+        {
+            "title": "Twitter Streaming API MASTER RECORD",
+            "tags": [
+                "Real-Time",
+                "Social Media",
+                "Streaming",
+                "API",
+                "Twitter",
+                "Data Analytics",
+                "Real-Time Data"
+            ]
+        },
+        {
+            "title": "PaperBack Swap API MASTER RECORD",
+            "tags": [
+                "Books",
+                "Trading",
+                "Purchasing",
+                "REST",
+                "XML",
+                "JSON"
+            ]
+        },
+        {
+            "title": "Weather Central API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Real-time",
+                "RESTful",
+                "Image-tile",
+                "XML",
+                "Data-Cloud",
+                "API-Integration"
+            ]
+        },
+        {
+            "title": "Yahoo Local Search API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mashup",
+                "RESTful",
+                "JSON",
+                "PHP",
+                "Search",
+                "Mapping",
+                "Localization"
+            ]
+        },
+        {
+            "title": "Google Geocoding API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Web Services",
+                "API",
+                "Mapping",
+                "Geocoding",
+                "Forward Geocoding",
+                "Reverse Geocoding",
+                "Viewport Biasing",
+                "Region Biasing"
+            ]
+        },
+        {
+            "title": "Highcharts API MASTER RECORD",
+            "tags": [
+                "Data Visualization",
+                "Web Development",
+                "Graphs",
+                "Charts",
+                "Interactive",
+                "Tools"
+            ]
+        },
+        {
+            "title": "Foursquare API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Mapping",
+                "Mobile",
+                "Photos",
+                "Search",
+                "Real-Time",
+                "Geo-Tagging",
+                "Audience Segmentation",
+                "JSON"
+            ]
+        },
+        {
+            "title": "Quova API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "IP",
+                "Mobile",
+                "Web",
+                "Desktop",
+                "Integration",
+                "API"
+            ]
+        },
+        {
+            "title": "NOAA National Weather Service (NWS) NDFD SOAP API MASTER RECORD",
+            "tags": [
+                "Weather Services",
+                "Government",
+                "Forecasting",
+                "Weather Observations",
+                "Tropical Storms",
+                "API"
+            ]
+        },
+        {
+            "title": "Norway Weather API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Nordic",
+                "International",
+                "Forecasting",
+                "English"
+            ]
+        },
+        {
+            "title": "Paperboy API MASTER RECORD",
+            "tags": [
+                "Geographic Search",
+                "Newspaper Database",
+                "Location-Based Services",
+                "News Services",
+                "Location",
+                "Publishing"
+            ]
+        },
+        {
+            "title": "Vine API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Mobile",
+                "SocialMedia",
+                "DataRetrieval",
+                "Integration",
+                "API"
+            ]
+        },
+        {
+            "title": "Syndic8 API MASTER RECORD",
+            "tags": [
+                "Feeds",
+                "News Services",
+                "Search",
+                "Aggregation",
+                "RSS",
+                "Atom",
+                "Content Discovery"
+            ]
+        },
+        {
+            "title": "hostip.info API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Community",
+                "Database",
+                "IP",
+                "Firefox",
+                "Web Integration"
+            ]
+        },
+        {
+            "title": "Google Talk API MASTER RECORD",
+            "tags": [
+                "Chat",
+                "XMPP",
+                "Real-time Communication",
+                "Integration",
+                "XMPP Specs",
+                "GAIM",
+                "Trillian Pro"
+            ]
+        },
+        {
+            "title": "Commission Junction API MASTER RECORD",
+            "tags": [
+                "Commission",
+                "Real-Time Data",
+                "Reporting",
+                "eCommerce",
+                "REST",
+                "SOAP"
+            ]
+        },
+        {
+            "title": "Google Cloud Print API MASTER RECORD",
+            "tags": [
+                "Cloud Computing",
+                "Mobile",
+                "Web Services",
+                "Printing",
+                "Office"
+            ]
+        },
+        {
+            "title": "Google AdSense API MASTER RECORD",
+            "tags": [
+                "Advertising",
+                "SEO",
+                "Analytics",
+                "Revenue Sharing",
+                "Content Management",
+                "REST",
+                "JSON"
+            ]
+        }
+    ],
+    [
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Discontinued",
+                "Mobile",
+                "JavaScript",
+                "Localization",
+                "Enterprise",
+                "Secure",
+                "Intranet",
+                "Premier",
+                "SplitAPIs"
+            ]
+        },
+        {
+            "title": "Microsoft Bing Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "AJAX",
+                "Customization",
+                "Imagery",
+                "Commercial"
+            ]
+        },
+        {
+            "title": "Google Earth API MASTER RECORD",
+            "tags": [
+                "Geospatial",
+                "Imagery",
+                "Analytics",
+                "3D",
+                "Scalable",
+                "Infrastructure",
+                "API",
+                "DataScience"
+            ]
+        },
+        {
+            "title": "Panoramio API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Photography",
+                "Integration",
+                "Deprecated",
+                "LocationBased"
+            ]
+        },
+        {
+            "title": "Bing Maps API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Viewer",
+                "REST",
+                "JavaScript",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Flickr API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Video",
+                "API Kit",
+                "REST",
+                "SOAP",
+                "XML-RPC",
+                "JSON",
+                "PHP"
+            ]
+        },
+        {
+            "title": "Twitter API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "Data Access",
+                "RESTful",
+                "Search",
+                "Syndication"
+            ]
+        },
+        {
+            "title": "Facebook API MASTER RECORD",
+            "tags": [
+                "Social",
+                "API",
+                "Development",
+                "Webhooks",
+                "Data",
+                "Integration",
+                "RESTful",
+                "JSON"
+            ]
+        },
+        {
+            "title": "World Weather Online API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "API",
+                "Localization",
+                "City Search",
+                "Time Zone",
+                "Ski",
+                "Marine",
+                "Historical Weather",
+                "Local Weather",
+                "Sailing",
+                "Surfing Weather",
+                "Ski Weather"
+            ]
+        },
+        {
+            "title": "GeoNames API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Database",
+                "Reference",
+                "Mapping",
+                "Postal",
+                "Weather",
+                "RESTful",
+                "Web Services",
+                "Free Download",
+                "User Contribution",
+                "Service Level Agreement",
+                "Premium Services"
+            ]
+        },
+        {
+            "title": "Mapfluence API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Data",
+                "Visualization",
+                "Viewer",
+                "RESTful",
+                "JavaScript",
+                "Web Service",
+                "Data Infrastructure",
+                "Online Mapping"
+            ]
+        },
+        {
+            "title": "Disqus API MASTER RECORD",
+            "tags": [
+                "Blogging",
+                "Forums",
+                "API",
+                "Comment System",
+                "Social Media",
+                "Integration",
+                "Developer Tools"
+            ]
+        },
+        {
+            "title": "Your Mapper API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Crime",
+                "Government",
+                "Localization",
+                "Open Data",
+                "Geolocation",
+                "Data Aggregation",
+                "Data Standardization",
+                "Web Integration",
+                "Mobile Integration"
+            ]
+        },
+        {
+            "title": "OpenLayers API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Open Source",
+                "Mobile",
+                "JavaScript",
+                "Vector Data"
+            ]
+        },
+        {
+            "title": "Bit.ly API MASTER RECORD",
+            "tags": [
+                "URL Shortener",
+                "URL Tracking",
+                "Real-time Analytics",
+                "Social Media Integration",
+                "Bookmarklets",
+                "Open API",
+                "Third-party Integration"
+            ]
+        },
+        {
+            "title": "Multimap API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "Integration",
+                "AJAX",
+                "POI",
+                "Business",
+                "Consumer",
+                "Global"
+            ]
+        },
+        {
+            "title": "MapLarge API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Mobile",
+                "Charts",
+                "Geolocation",
+                "Data Visualization",
+                "API Integration",
+                "RESTful"
+            ]
+        },
+        {
+            "title": "Foursquare API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Mapping",
+                "Mobile",
+                "Photos",
+                "Search",
+                "Geolocation",
+                "Analytics",
+                "Marketing",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Amazon Product Advertising API MASTER RECORD",
+            "tags": [
+                "ProductData",
+                "eCommerce",
+                "Advertising",
+                "REST",
+                "SOAP",
+                "Affiliate",
+                "Discovery"
+            ]
+        },
+        {
+            "title": "Google AdSense API MASTER RECORD",
+            "tags": [
+                "Advertising",
+                "SEO",
+                "Revenue Sharing",
+                "Content Creation",
+                "Web Development",
+                "REST API",
+                "JSON"
+            ]
+        },
+        {
+            "title": "Google Custom Search API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Web Search",
+                "Image Search",
+                "RESTful",
+                "Website"
+            ]
+        },
+        {
+            "title": "hostip.info API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Community",
+                "Database",
+                "IP",
+                "Firefox",
+                "Web Integration"
+            ]
+        },
+        {
+            "title": "OpenStreetMap API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Collaborative",
+                "Open-Source",
+                "Web Mapping",
+                "Mobile",
+                "Data Download",
+                "APIs"
+            ]
+        },
+        {
+            "title": "Mapbox API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "Web",
+                "Mapping",
+                "Geography",
+                "Visualization",
+                "Open Source",
+                "Data Integration",
+                "Mobile Compatibility"
+            ]
+        },
+        {
+            "title": "Naver API MASTER RECORD",
+            "tags": [
+                "Search",
+                "News",
+                "Email",
+                "Education",
+                "ChildSafe"
+            ]
+        },
+        {
+            "title": "Weather Channel API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "DataFeed",
+                "XML",
+                "RealTime",
+                "Forecast",
+                "Integration",
+                "Location"
+            ]
+        },
+        {
+            "title": "NOAA National Weather Service (NWS) NDFD SOAP API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Government",
+                "SOAP",
+                "XML",
+                "Forecasts",
+                "Alerts",
+                "Observations",
+                "Specialized Products"
+            ]
+        },
+        {
+            "title": "StrikeIron IP Address Lookup API MASTER RECORD",
+            "tags": [
+                "Networking",
+                "Addressing",
+                "Web Development",
+                "Verification",
+                "Reference",
+                "Data",
+                "API",
+                "Lookup"
+            ]
+        },
+        {
+            "title": "Google Cloud Translation API MASTER RECORD",
+            "tags": [
+                "MachineLearning",
+                "APIIntegrations",
+                "LanguageProcessing",
+                "CloudTranslation",
+                "Customization",
+                "BatchProcessing"
+            ]
+        },
+        {
+            "title": "Wikipedia API MASTER RECORD",
+            "tags": [
+                "Reference",
+                "Wiki",
+                "API",
+                "JavaScript",
+                "REST",
+                "Python",
+                "XML",
+                "JSON",
+                "Data Access",
+                "MediaWiki",
+                "Web Development"
+            ]
+        }
+    ],
+    [
+        {
+            "title": "Flickr API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Video",
+                "API Kit",
+                "REST",
+                "SOAP",
+                "XML-RPC",
+                "JSON",
+                "PHP"
+            ]
+        },
+        {
+            "title": "YouTube API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Media",
+                "RESTful",
+                "Authentication",
+                "Web Services",
+                "JavaScript",
+                "XML",
+                "JSON",
+                "API Reference"
+            ]
+        },
+        {
+            "title": "Amazon Product Advertising API MASTER RECORD",
+            "tags": [
+                "eCommerce",
+                "Advertising",
+                "Product Data",
+                "Affiliate Marketing",
+                "REST API",
+                "SOAP API",
+                "Product Advertising"
+            ]
+        },
+        {
+            "title": "Twitter API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "RESTful API",
+                "Data Access",
+                "Search",
+                "API Development"
+            ]
+        },
+        {
+            "title": "Bing API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Machine Learning",
+                "Research",
+                "Historical"
+            ]
+        },
+        {
+            "title": "del.icio.us API MASTER RECORD",
+            "tags": [
+                "Social Bookmarking",
+                "Tagging System",
+                "HTTP Interface",
+                "RESTful",
+                "XML",
+                "Bookmark Management",
+                "Social Sharing"
+            ]
+        },
+        {
+            "title": "Facebook API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Webhooks"
+            ]
+        },
+        {
+            "title": "Google Picasa API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "DataAPI",
+                "GData",
+                "Feeds",
+                "WebAlbums",
+                "PhotoManagement",
+                "ContentUpdate"
+            ]
+        },
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "Enterprise",
+                "Localization",
+                "JavaScript",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Wikipedia API MASTER RECORD",
+            "tags": [
+                "Data Access",
+                "Web API",
+                "MediaWiki",
+                "RESTful",
+                "JSON",
+                "JavaScript",
+                "API"
+            ]
+        },
+        {
+            "title": "Last.fm API MASTER RECORD",
+            "tags": [
+                "Music",
+                "Data Access",
+                "RESTful",
+                "XML",
+                "JSON",
+                "Web Development",
+                "Desktop Applications",
+                "Mobile Applications"
+            ]
+        },
+        {
+            "title": "DBpedia API MASTER RECORD",
+            "tags": [
+                "Semantic Web",
+                "Knowledge Graph",
+                "Data Extraction",
+                "Wikipedia",
+                "Structured Data",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Tumblr API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "API",
+                "JSON",
+                "JSONP",
+                "Web",
+                "Blogger",
+                "Tagging",
+                "UserManagement"
+            ]
+        },
+        {
+            "title": "Instagram Graph API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Mobile",
+                "Social",
+                "Authentication",
+                "Friend Connections",
+                "Data Manipulation"
+            ]
+        },
+        {
+            "title": "Eventful API MASTER RECORD",
+            "tags": [
+                "Events",
+                "Calendars",
+                "Guides",
+                "Music",
+                "API",
+                "RESTful",
+                "OpenPlatform",
+                "WebApplications",
+                "RealTimeData",
+                "Localization"
+            ]
+        },
+        {
+            "title": "Foursquare API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Social",
+                "Mapping",
+                "Mobile",
+                "Photos",
+                "Search",
+                "Real-Time"
+            ]
+        },
+        {
+            "title": "Google AdSense API MASTER RECORD",
+            "tags": [
+                "Advertising",
+                "SEO",
+                "API",
+                "AdSense",
+                "REST",
+                "JSON",
+                "Web Content",
+                "Revenue Sharing"
+            ]
+        },
+        {
+            "title": "Panoramio API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Photography",
+                "Web Integration",
+                "RESTful",
+                "JSON",
+                "Deprecated"
+            ]
+        },
+        {
+            "title": "Yahoo Query Language GraphQL API MASTER RECORD",
+            "tags": [
+                "GraphQL",
+                "SQL-like Syntax",
+                "Data Retrieval",
+                "JSON",
+                "XML",
+                "Database"
+            ]
+        },
+        {
+            "title": "Google AdWords API MASTER RECORD",
+            "tags": [
+                "Advertising",
+                "Marketing",
+                "Search",
+                "Automation",
+                "Reporting",
+                "Ad Management",
+                "Bid Management",
+                "Account Management",
+                "Client Libraries"
+            ]
+        },
+        {
+            "title": "Google App Engine API MASTER RECORD",
+            "tags": [
+                "Cloud",
+                "Web Development",
+                "Infrastructure",
+                "Web Serving",
+                "Storage",
+                "Authentication",
+                "Email",
+                "Google Cloud",
+                "Google Accounts",
+                "APIs",
+                "Historical"
+            ]
+        },
+        {
+            "title": "Images API MASTER RECORD",
+            "tags": [
+                "Images",
+                "Royalty-Free",
+                "Web Integration",
+                "Print-On-Demand",
+                "API"
+            ]
+        },
+        {
+            "title": "Facebook Graph API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Demographics",
+                "Search",
+                "Graph",
+                "Social Network",
+                "Data Access",
+                "Development"
+            ]
+        },
+        {
+            "title": "VK API MASTER RECORD",
+            "tags": [
+                "Social",
+                "European",
+                "REST",
+                "User Management",
+                "Messaging",
+                "Image Uploads",
+                "Status Updates",
+                "European Social Networking"
+            ]
+        },
+        {
+            "title": "Pixlr API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Editing",
+                "Cloud-based",
+                "Web",
+                "ImageEditing"
+            ]
+        },
+        {
+            "title": "FotoFlexer API MASTER RECORD",
+            "tags": [
+                "Image Editing",
+                "Web Integration",
+                "JavaScript",
+                "Configuration",
+                "Image Processing"
+            ]
+        },
+        {
+            "title": "Ribbet API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Images",
+                "Editing",
+                "Design",
+                "Cloud Storage",
+                "Customization",
+                "Integration"
+            ]
+        },
+        {
+            "title": "500px API MASTER RECORD",
+            "tags": [
+                "Photography",
+                "Social",
+                "Image",
+                "Sharing",
+                "Community",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Veoh API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Mobile",
+                "Social",
+                "Hosting",
+                "Aggregation",
+                "Sharing",
+                "Networks",
+                "Organization",
+                "Playback",
+                "Download",
+                "Search",
+                "Guide"
+            ]
+        },
+        {
+            "title": "Yahoo Local Search API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Mapping",
+                "Localization",
+                "Business Information",
+                "User Review",
+                "RESTful",
+                "API Integration"
+            ]
+        },
+        {
+            "title": "Yahoo Mail API MASTER RECORD",
+            "tags": [
+                "Email",
+                "Authentication",
+                "OAuth",
+                "Messaging"
+            ]
+        },
+        {
+            "title": "Blekko API MASTER RECORD",
+            "tags": [
+                "Search",
+                "API",
+                "Search Engine",
+                "Slashtags",
+                "Spam",
+                "SEO"
+            ]
+        },
+        {
+            "title": "Linode API MASTER RECORD",
+            "tags": [
+                "Virtual Hosting",
+                "Automation",
+                "API Management",
+                "Virtualization"
+            ]
+        },
+        {
+            "title": "Shopping.com API MASTER RECORD",
+            "tags": [
+                "eCommerce",
+                "RESTful",
+                "Product Catalog",
+                "Merchant Offers",
+                "Keyword Search",
+                "Product Reviews",
+                "Price Comparison",
+                "Pagination"
+            ]
+        },
+        {
+            "title": "Yelp Fusion API MASTER RECORD",
+            "tags": [
+                "Recommendations",
+                "Business",
+                "Directories",
+                "eCommerce",
+                "Localization",
+                "Search",
+                "RESTful",
+                "JSON",
+                "Review",
+                "Rating",
+                "Geolocation",
+                "Phone Number Search",
+                "Neighborhood",
+                "Recent Reviews",
+                "Pictures",
+                "Top Reviewers",
+                "Phone Number Lookup"
+            ]
+        },
+        {
+            "title": "Weather Channel API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Real-Time",
+                "Forecasting",
+                "Location-Based",
+                "API-Integration",
+                "Weather-Data",
+                "XML"
+            ]
+        },
+        {
+            "title": "Vimeo API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Community",
+                "Content",
+                "Movies",
+                "Transcoding"
+            ]
+        },
+        {
+            "title": "LinkedIn API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Enterprise",
+                "Business",
+                "Networking",
+                "API",
+                "Integration",
+                "RESTful",
+                "OAuth",
+                "Professional"
+            ]
+        },
+        {
+            "title": "SoundCloud API MASTER RECORD",
+            "tags": [
+                "Music",
+                "Audio",
+                "Social",
+                "SDK",
+                "Integration",
+                "Web",
+                "Mobile"
+            ]
+        },
+        {
+            "title": "CrunchBase API MASTER RECORD",
+            "tags": [
+                "Tech Companies",
+                "Startups",
+                "Investment Profiles",
+                "Technology Directory",
+                "API Access",
+                "JSON Output",
+                "Enterprise License",
+                "Applications License"
+            ]
+        },
+        {
+            "title": "Vine API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Mobile",
+                "SocialMedia",
+                "DataRetrieval",
+                "Integration",
+                "API"
+            ]
+        },
+        {
+            "title": "Page2Images API MASTER RECORD",
+            "tags": [
+                "Screenshots",
+                "Images",
+                "Web Site Management",
+                "Responsive Design",
+                "Mobile Optimization",
+                "REST API"
+            ]
+        },
+        {
+            "title": "The New York Times Movie Reviews API MASTER RECORD",
+            "tags": [
+                "Movies",
+                "Actors",
+                "News Services",
+                "Reviews",
+                "API",
+                "Data Integration"
+            ]
+        },
+        {
+            "title": "The New York Times Newswire API MASTER RECORD",
+            "tags": [
+                "News Services",
+                "Metadata",
+                "Real-Time",
+                "Reference",
+                "Search",
+                "Publishing",
+                "Article",
+                "Metadata",
+                "News",
+                "Reference",
+                "Real-Time",
+                "Search"
+            ]
+        },
+        {
+            "title": "Rhapsody API MASTER RECORD",
+            "tags": [
+                "Music",
+                "Integration",
+                "Authentication",
+                "SDK",
+                "API",
+                "Mobile",
+                "Web"
+            ]
+        },
+        {
+            "title": "Tailrank API MASTER RECORD",
+            "tags": [
+                "Content Analysis",
+                "Monitor",
+                "API",
+                "Blog Monitoring",
+                "News Services",
+                "Search"
+            ]
+        },
+        {
+            "title": "iTunes and iTunes Connect API MASTER RECORD",
+            "tags": [
+                "REST",
+                "AppStore",
+                "SalesData",
+                "Reviews",
+                "Ratings",
+                "Ranking",
+                "DataAccess",
+                "Mobile",
+                "eCommerce",
+                "Integration"
+            ]
+        },
+        {
+            "title": "TwitPic API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Blogging",
+                "Social",
+                "Image Sharing",
+                "Twitter Integration",
+                "Photo Upload",
+                "Status Update"
+            ]
+        },
+        {
+            "title": "Paperboy API MASTER RECORD",
+            "tags": [
+                "Geographic Search",
+                "Newspaper Database",
+                "Location-Based Services",
+                "News Services",
+                "Location",
+                "Publishing"
+            ]
+        },
+        {
+            "title": "Quova API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "IP",
+                "Mobile",
+                "Web",
+                "Desktop",
+                "Integration",
+                "API"
+            ]
+        }
+    ],
+    [
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Mobile",
+                "Desktop",
+                "Localization",
+                "Geocoding",
+                "JavaScript",
+                "HTTPS",
+                "Enterprise"
+            ]
+        },
+        {
+            "title": "Flickr API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Video",
+                "Multimedia",
+                "API Kits",
+                "REST",
+                "SOAP",
+                "XML-RPC",
+                "JSON",
+                "PHP"
+            ]
+        },
+        {
+            "title": "YouTube API MASTER RECORD",
+            "tags": [
+                "Video",
+                "Media",
+                "Integration",
+                "Search",
+                "Playlist",
+                "Authentication"
+            ]
+        },
+        {
+            "title": "Yahoo Local Search API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Mapping",
+                "Localization",
+                "RESTful API",
+                "Integration",
+                "Mashup",
+                "User Reviews",
+                "Location Based Services",
+                "API Platforms"
+            ]
+        },
+        {
+            "title": "Microsoft Bing Maps API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Viewer",
+                "Web Services",
+                "Commercial",
+                "3D"
+            ]
+        },
+        {
+            "title": "Twitter API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "Microblogging",
+                "RESTful API",
+                "Data Access",
+                "Twitter Service",
+                "Historical API",
+                "API Decommissioned"
+            ]
+        },
+        {
+            "title": "Google Fusion Tables API MASTER RECORD",
+            "tags": [
+                "Database",
+                "Collaboration",
+                "Visualization",
+                "Mapping",
+                "API",
+                "Integration",
+                "Data Analysis"
+            ]
+        },
+        {
+            "title": "Google Analytics Managment API MASTER RECORD",
+            "tags": [
+                "Analytics",
+                "Web Analytics",
+                "Management",
+                "HTTPS",
+                "GET Requests",
+                "JSON",
+                "Property Management",
+                "Goal Management",
+                "User Permissions",
+                "Data Uploads"
+            ]
+        },
+        {
+            "title": "Google Street View Image API MASTER RECORD",
+            "tags": [
+                "StreetView",
+                "GeoLocation",
+                "Images",
+                "APIs",
+                "WebServices"
+            ]
+        },
+        {
+            "title": "OpenLayers API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "OpenSource",
+                "JavaScript",
+                "Mapping"
+            ]
+        },
+        {
+            "title": "Mapfluence API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Data",
+                "Visualization",
+                "Viewer",
+                "RESTful",
+                "JavaScript",
+                "Web Service",
+                "Data Infrastructure",
+                "Online Mapping"
+            ]
+        },
+        {
+            "title": "Google AdSense API MASTER RECORD",
+            "tags": [
+                "Advertising",
+                "SEO",
+                "Revenue Sharing",
+                "Ad Management",
+                "Developer Tools"
+            ]
+        },
+        {
+            "title": "Zillow API MASTER RECORD",
+            "tags": [
+                "Real Estate",
+                "Banking",
+                "Property Data",
+                "Mortgage",
+                "Market Statistics",
+                "Demographics"
+            ]
+        },
+        {
+            "title": "Disqus API MASTER RECORD",
+            "tags": [
+                "Blogging",
+                "Forums",
+                "API",
+                "Comment System",
+                "Social Media",
+                "Integration",
+                "Developer Tools"
+            ]
+        },
+        {
+            "title": "Your Mapper API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Crime",
+                "Government",
+                "Localization",
+                "Open Data",
+                "Geolocation",
+                "Data Aggregation",
+                "Data Standardization",
+                "Web Integration",
+                "Mobile Integration"
+            ]
+        },
+        {
+            "title": "Google Calendar API MASTER RECORD",
+            "tags": [
+                "Calendars",
+                "Events",
+                "API",
+                "Integration",
+                "GData",
+                "Web",
+                "Mobile",
+                "Sync",
+                "Search"
+            ]
+        },
+        {
+            "title": "OpenDOAR API MASTER RECORD",
+            "tags": [
+                "Education",
+                "Reference",
+                "API",
+                "Repository",
+                "XML",
+                "Data Retrieval",
+                "Machine Interface"
+            ]
+        },
+        {
+            "title": "MapLarge API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Charts",
+                "Mobile",
+                "RESTful"
+            ]
+        },
+        {
+            "title": "DonorsChoose API MASTER RECORD",
+            "tags": [
+                "Education",
+                "Charity",
+                "Non-Profit",
+                "API",
+                "Donation",
+                "Integration",
+                "Education",
+                "Charity",
+                "Non-Profit",
+                "API",
+                "Donation",
+                "Integration"
+            ]
+        },
+        {
+            "title": "BBC API MASTER RECORD",
+            "tags": [
+                "Media",
+                "England",
+                "Music",
+                "TV",
+                "Schedule",
+                "Program Listings",
+                "Program Details"
+            ]
+        },
+        {
+            "title": "Formstack API MASTER RECORD",
+            "tags": [
+                "OnlineForms",
+                "Marketing",
+                "Surveys",
+                "OrderManagement",
+                "Registration",
+                "BusinessTools"
+            ]
+        },
+        {
+            "title": "Twilio API MASTER RECORD",
+            "tags": [
+                "Telephony",
+                "Cloud",
+                "Text-to-Speech",
+                "Voice",
+                "Webhooks",
+                "RESTful",
+                "Scalability",
+                "Web Development"
+            ]
+        },
+        {
+            "title": "Twilio SMS API MASTER RECORD",
+            "tags": [
+                "Messaging",
+                "Telephony",
+                "RESTful",
+                "SMS",
+                "USA",
+                "Cloud Communication",
+                "Video",
+                "Voice"
+            ]
+        },
+        {
+            "title": "Bing API MASTER RECORD",
+            "tags": [
+                "Search Engine",
+                "Web Search",
+                "AI Integration",
+                "Free Trial",
+                "Historical Research"
+            ]
+        },
+        {
+            "title": "Yahoo Traffic API MASTER RECORD",
+            "tags": [
+                "Transportation",
+                "Mapping",
+                "Auto",
+                "Mapping",
+                "Real-Time",
+                "Integration",
+                "API",
+                "RESTful",
+                "RSS"
+            ]
+        },
+        {
+            "title": "Google Geocoding API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Geocoding",
+                "Integration",
+                "Localization",
+                "Coordinates"
+            ]
+        },
+        {
+            "title": "Idescat Population Search API MASTER RECORD",
+            "tags": [
+                "GeographicDemographics",
+                "RESTfulAPI",
+                "PopulationData",
+                "Catalonia",
+                "SearchAPI",
+                "Spanish",
+                "JSON",
+                "XML",
+                "PHP",
+                "TXT",
+                "Demographics"
+            ]
+        }
+    ],
+    [
+        {
+            "title": "Google Maps API MASTER RECORD",
+            "tags": [
+                "Mapping",
+                "Viewer",
+                "Discontinued",
+                "JavaScript",
+                "Localization",
+                "Geocoding",
+                "Enterprise",
+                "Mobile"
+            ]
+        },
+        {
+            "title": "Flickr API MASTER RECORD",
+            "tags": [
+                "Photos",
+                "Video",
+                "Integration",
+                "Upload",
+                "REST",
+                "SOAP",
+                "XML-RPC",
+                "Documentation"
+            ]
+        },
+        {
+            "title": "Microsoft Bing Maps API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "AJAX",
+                "Map Control",
+                "Route Planning",
+                "Traffic Info",
+                "Layer Customization",
+                "API Services",
+                "Commercial Applications"
+            ]
+        },
+        {
+            "title": "Twitter API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Blogging",
+                "RESTful",
+                "Data Access",
+                "Search"
+            ]
+        },
+        {
+            "title": "Panoramio API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Photography",
+                "Web Integration",
+                "Deprecated",
+                "RESTful",
+                "JSON"
+            ]
+        },
+        {
+            "title": "Amazon Product Advertising API MASTER RECORD",
+            "tags": [
+                "eCommerce",
+                "Advertising",
+                "Product Data",
+                "Web Services",
+                "REST API",
+                "SOAP API"
+            ]
+        },
+        {
+            "title": "Ergast API MASTER RECORD",
+            "tags": [
+                "Racing",
+                "Historical Data",
+                "Non-Commercial Use",
+                "Formula 1",
+                "Formula E",
+                "Sports Data"
+            ]
+        },
+        {
+            "title": "Google Earth API MASTER RECORD",
+            "tags": [
+                "Geospatial Analysis",
+                "Imagery Processing",
+                "Big Data",
+                "3D Visualization",
+                "Mapping",
+                "Infrastructure"
+            ]
+        },
+        {
+            "title": "Blogger API MASTER RECORD",
+            "tags": [
+                "Blogging",
+                "Content Management",
+                "Web Integration",
+                "Data API",
+                "Feed Management"
+            ]
+        },
+        {
+            "title": "Eventful API MASTER RECORD",
+            "tags": [
+                "Events",
+                "Calendars",
+                "Guides",
+                "Music",
+                "RESTful",
+                "XML",
+                "JSON",
+                "YAML"
+            ]
+        },
+        {
+            "title": "Vast API MASTER RECORD",
+            "tags": [
+                "Web Search",
+                "Crawling",
+                "Structured Data",
+                "Vertical Search",
+                "Integration",
+                "JavaScript",
+                "API"
+            ]
+        },
+        {
+            "title": "Gruvr API MASTER RECORD",
+            "tags": [
+                "Music",
+                "Widgets",
+                "Events",
+                "Geolocation",
+                "Concerts",
+                "Widgets",
+                "API"
+            ]
+        },
+        {
+            "title": "Multimap API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "Integration",
+                "AJAX",
+                "POI",
+                "Business",
+                "Consumer",
+                "Global"
+            ]
+        },
+        {
+            "title": "Google Gadgets API MASTER RECORD",
+            "tags": [
+                "Widgets",
+                "Personalization",
+                "Web Development",
+                "User Interface",
+                "Application Integration"
+            ]
+        },
+        {
+            "title": "Google Directions API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Routing"
+            ]
+        },
+        {
+            "title": "Google Geocoding API MASTER RECORD",
+            "tags": [
+                "Geocoding",
+                "Reverse Geocoding",
+                "Viewport Biasing",
+                "Region Biasing",
+                "Mapping"
+            ]
+        },
+        {
+            "title": "GeoNames API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Database",
+                "Mapping",
+                "Postal",
+                "Weather",
+                "Wiki",
+                "RESTful",
+                "API Suite",
+                "Data Contribution",
+                "premium web services"
+            ]
+        },
+        {
+            "title": "Janrain Engage API MASTER RECORD",
+            "tags": [
+                "Security",
+                "Tools",
+                "Social",
+                "Authentication",
+                "Social Login",
+                "Single Sign-On (SSO)",
+                "User Management",
+                "Analytics",
+                "Web Integration"
+            ]
+        },
+        {
+            "title": "GeoAdmin API MASTER RECORD",
+            "tags": [
+                "Geospatial",
+                "Mapping",
+                "Data Access",
+                "Layer Management",
+                "Map Editing",
+                "Switzerland"
+            ]
+        },
+        {
+            "title": "Formstack API MASTER RECORD",
+            "tags": [
+                "OnlineForms",
+                "Marketing",
+                "Surveys",
+                "OrderManagement",
+                "Registration",
+                "BusinessTools"
+            ]
+        },
+        {
+            "title": "Microsoft Bing API MASTER RECORD",
+            "tags": [
+                "Search",
+                "Web Content",
+                "Images",
+                "News",
+                "Monetization",
+                "RESTful",
+                "JSON",
+                "SOAP"
+            ]
+        },
+        {
+            "title": "Facebook API MASTER RECORD",
+            "tags": [
+                "Social",
+                "Webhooks",
+                "Deprecated",
+                "RESTful",
+                "APIs",
+                "Facebook",
+                "Ecosystem",
+                "Integration"
+            ]
+        },
+        {
+            "title": "TourCMS Marketplace API MASTER RECORD",
+            "tags": [
+                "Travel",
+                "Booking",
+                "Reservations",
+                "Tourism",
+                "Real-Time",
+                "Data Access",
+                "Tour Operators",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Yahoo Internet Location Platform API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mapping",
+                "Spatial Interoperability",
+                "Geographic Discovery",
+                "Geotagging",
+                "Geotargeting",
+                "Geolocating",
+                "Web Integration"
+            ]
+        },
+        {
+            "title": "43Things API MASTER RECORD",
+            "tags": [
+                "SocialNetworking",
+                "Tagging",
+                "GoalSetting",
+                "Community"
+            ]
+        },
+        {
+            "title": "Readmill API MASTER RECORD",
+            "tags": [
+                "Social",
+                "eBooks",
+                "Books",
+                "Social Sharing",
+                "Reading",
+                "Mobile",
+                "API",
+                "Integration"
+            ]
+        },
+        {
+            "title": "Naver API MASTER RECORD",
+            "tags": [
+                "Search",
+                "News",
+                "Email",
+                "Education",
+                "ChildSafe"
+            ]
+        },
+        {
+            "title": "YouTube API MASTER RECORD",
+            "tags": [
+                "REST",
+                "Authentication",
+                "XML",
+                "Video",
+                "Media"
+            ]
+        },
+        {
+            "title": "OpenWeatherMap API MASTER RECORD",
+            "tags": [
+                "Weather",
+                "Mapping",
+                "Geolocation",
+                "Historical",
+                "RESTful",
+                "JSON"
+            ]
+        },
+        {
+            "title": "Google Fusion Tables API MASTER RECORD",
+            "tags": [
+                "Data Visualization",
+                "Collaboration",
+                "Real-Time",
+                "Data Import",
+                "Database",
+                "Tools",
+                "Mapping"
+            ]
+        },
+        {
+            "title": "MapQuest API MASTER RECORD",
+            "tags": [
+                "Geolocation",
+                "Mobile",
+                "Web",
+                "Desktop",
+                "Android",
+                "iOS",
+                "Geocoding",
+                "Search",
+                "Mapping"
+            ]
+        }
+    ]
+]

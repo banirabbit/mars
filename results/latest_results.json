@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "precision": 0.1,
+    "recall": 1.0,
+    "f1_score": 0.18181818181818182,
+    "ndcg": 1.0,
+    "hallucination_rate": 0.0,
+    "total_correct": 5,
+    "total_predicted": 50,
+    "total_ground_truth": 5,
+    "total_hallucinations": 0
+  },
+  "config_summary": {
+    "model_path": "/home/yinzijie/code/mars/src/embedder/finetuned_bge_singlegpu_2025-07-07_18-47",
+    "retrieval_k": 100,
+    "final_limit": 50,
+    "retry_attempts": 15
+  }
+}
