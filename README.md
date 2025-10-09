@@ -45,10 +45,22 @@ mars/
 
 ### ⚙️ Installation
 
-```bash
-pip install sentence-transformers langchain-community faiss-cpu scikit-learn tqdm jieba pyyaml openai langgraph
-```
+Environment Setup
 
+Please use Python 3.10 or higher.
+You can install the required dependencies in one of the following ways:
+```bash
+# Option 1: Install directly
+pip install sentence-transformers langchain-community faiss-cpu scikit-learn tqdm jieba pyyaml openai langgraph
+
+# Option 2: Install from requirements file
+pip install -r requirements.txt
+```
+Download the Pretrained Embedding Model
+
+```bash
+git clone https://huggingface.co/xiaotubani/mars-finetune
+```
 ---
 
 ### 🧠 How to Run

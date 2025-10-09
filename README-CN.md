@@ -43,10 +43,22 @@ mars/
 
 ### ⚙️ 环境依赖安装
 
-```bash
-pip install sentence-transformers langchain-community faiss-cpu scikit-learn tqdm jieba pyyaml openai langgraph
-```
 
+请使用 Python 3.10 及以上版本。
+安装所需依赖包可通过以下两种方式完成：
+```bash
+# 方式一：直接安装依赖
+
+pip install sentence-transformers langchain-community faiss-cpu scikit-learn tqdm jieba pyyaml openai langgraph
+
+# 方式二：通过 requirements.txt 安装
+pip install -r requirements.txt
+```
+下载训练好的嵌入模型
+
+```bash
+git clone https://huggingface.co/xiaotubani/mars-finetune
+```
 ---
 
 ### 🚀 运行方式
@@ -80,9 +92,9 @@ paths:
   test_data_path: "data/rewrite/seed42/test_rewrite_data1202.json"
 
 llm:
-  base_url: "http://192.168.1.101:30111/v1"
-  api_key: "loopinnetwork"
-  model_name: "Qwen2.5-14B-Instruct"
+  base_url: ""
+  api_key: ""
+  model_name: ""
   max_retry_count: 5
 ```
 
