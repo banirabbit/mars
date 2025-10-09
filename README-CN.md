@@ -94,7 +94,7 @@ paths:
 llm:
   base_url: ""
   api_key: ""
-  model_name: ""
+  model_name: "Qwen2.5-14B-Instruct"
   max_retry_count: 5
 ```
 

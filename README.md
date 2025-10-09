@@ -94,8 +94,8 @@ paths:
   test_data_path: "data/rewrite/seed42/test_rewrite_data1202.json"
 
 llm:
-  base_url: "http://192.168.1.101:30111/v1"
-  api_key: "loopinnetwork"
+  base_url: ""
+  api_key: ""
   model_name: "Qwen2.5-14B-Instruct"
   max_retry_count: 5
 ```
