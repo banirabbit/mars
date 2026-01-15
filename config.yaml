@@ -42,23 +42,26 @@ llm:
 retrieval:
   # Initial retrieval count / 初始检索数量
   initial_k: 100
-  
+
   # Reranking top N / 重排序前N个
   rerank_top_n: 90
-  
+
   # Final API limit / 最终API限制数量
   final_api_limit: 50
-  
-  # Similarity-based top N / 基于相似度的前N个
+
+  # Composite reranking parameters / 组合重排序参数
+  lambda_sim: 0.5  # Weight for similarity score (0-1), remaining for frequency
+  use_log_freq: true  # Whether to use logarithmic normalization for frequency
+  top_return: 50  # Number of APIs to return before LLM processing
+
+  # Legacy parameters (kept for compatibility)
   similarity_top_n: 10
-  
-  # Ordered APIs limit / 有序API限制数量
   ordered_apis_limit: 40
-  
+
   # BM25 parameters / BM25参数
   bm25_k1: 1.5
   bm25_b: 0.75
-  
+
   # Ensemble weights / 集成权重
   bm25_weight: 0.5157
   vector_weight: 0.4843

@@ -32,6 +32,10 @@ class RetrievalConfig:
     bm25_b: float
     bm25_weight: float
     vector_weight: float
+    # New composite reranking parameters
+    lambda_sim: float  # Weight for similarity score (0-1)
+    use_log_freq: bool  # Whether to use logarithmic normalization
+    top_return: int  # Number of APIs to return before LLM
 
 
 @dataclass
@@ -126,7 +130,10 @@ class Config:
                 'bm25_k1': 1.5,
                 'bm25_b': 0.75,
                 'bm25_weight': 0.5157,
-                'vector_weight': 0.4843
+                'vector_weight': 0.4843,
+                'lambda_sim': 0.5,
+                'use_log_freq': True,
+                'top_return': 50
             },
             'paths': {
                 'vectordb_dir': 'data/vector_db',
@@ -175,7 +182,11 @@ class Config:
             bm25_k1=retrieval_data.get('bm25_k1', 1.5),
             bm25_b=retrieval_data.get('bm25_b', 0.75),
             bm25_weight=retrieval_data.get('bm25_weight', 0.5157),
-            vector_weight=retrieval_data.get('vector_weight', 0.4843)
+            vector_weight=retrieval_data.get('vector_weight', 0.4843),
+            # New composite reranking parameters
+            lambda_sim=retrieval_data.get('lambda_sim', 0.5),
+            use_log_freq=retrieval_data.get('use_log_freq', True),
+            top_return=retrieval_data.get('top_return', 50)
         )
     
     def _create_path_config(self) -> PathConfig:

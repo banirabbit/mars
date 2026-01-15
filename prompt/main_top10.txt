@@ -75,14 +75,14 @@ Example mashups and their associated APIs are as follows:
 To ensure accurate recommendations, follow these steps to think step by step:
 
 1. Analyze Functional Requirements: Carefully read the Mashup description and extract the key functional needs.
-2. Filter APIs: Review the description and tags of each API in related_apis to determine if it fulfills the extracted functional requirements. Select only APIs that meet the needs.
-3. Retrieve Titles: For each matching API, extract its title field and include it in the final output.
-4. Ensure Coverage: Verify that the selected APIs comprehensively cover all the Mashup's functional requirements. Combine multiple APIs if necessary.
-5. Return 10 APIs: The output list of APIs must always contain exactly 10 entries. .
+2. Filter APIs: From related_apis, first select APIs that fully satisfy all functional requirements. If fewer than {{k}} such APIs exist, then include APIs that satisfy at least one functional requirement.
+3. Select {{k}} APIs: The output list must contain exactly {{k}} APIs. If there are fewer than {{k}} fully satisfying APIs, fill the remaining slots with APIs that partially satisfy the requirements but are still functionally relevant.
+4. Ensure Coverage: Verify that the final selected APIs, when combined, comprehensively cover all functional requirements of the Mashup. Adjust the selection if necessary to maintain full coverage.
+5. Retrieve Titles: For each selected API, extract only its title field and include it in the final output.
 Output Format:
 The output should be a valid JSON object containing two keys: mashup and related_apis.
 The value of mashup must exactly match the description provided in the input.
-The related_apis key must contain a list of exactly 10 items, each representing the title of a selected API. No empty strings or placeholders.
+The related_apis key must contain a list of exactly {{k}} items, each representing the title of a selected API. No empty strings or placeholders.
 Only select titles from the provided related_apis list. Do not create or modify any titles.
 Task Input Structure:
 {
@@ -142,6 +142,6 @@ Example Output:
 ```
 Output Requirements:
 The JSON output must strictly include only the mashup and related_apis fields.
-The related_apis list must always have exactly 10 items.Selecting APIs only from the provided list of related_apis.
+The related_apis list must always have exactly {{k}} items.Selecting APIs only from the provided list of related_apis.
 Avoid any additional comments or unnecessary text in the output.
 ### Actual Input:

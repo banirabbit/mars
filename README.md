@@ -4,18 +4,11 @@
 
 ### 📘 Abstract
 
-Service recommendation for mashup development faces critical challenges such as **cold-start problems** and the difficulty of **identifying genuine API dependencies** within noisy co-occurrence data. Traditional methods—including collaborative filtering, content-based recommendation, and simple LLM-based retrieval—fail to address these issues effectively.
+Service recommendation for mashup development faces critical challenges due to the sparse usage history of newly introduced mashups and APIs, as well as the difficulty of inferring genuine API dependencies from mashup compositions, where APIs are often co-used in a noisy and implicit manner. Traditional collaborative filtering, content-based methods, and standalone LLM-based approaches have limitations in jointly addressing these challenges in a unified manner. We propose MARS, a multi-agent collaborative recommendation framework that systematically integrates semantic alignment, structure-aware retrieval, and validation-based recommendation under a constrained candidate space.
 
-We propose **MARS (Multi-Agent Collaborative Reasoning System)**, a framework that **extends Retrieval-Augmented Generation (RAG)** with systematic algorithmic innovations rather than relying on prompt engineering alone.
+MARS incorporates multiple algorithmic components to improve different stages of the service recommendation process. Specifically, agent-driven semantic enrichment substantially mitigates cross-representation semantic mismatch between mashups and APIs, reducing the average Jensen–Shannon distance from 0.7333 to 0.6333, while baseline methods exhibit negligible changes. Structure-aware fine-tuning captures API compositional patterns beyond surface-level semantics, and data-driven weight optimization learns the fusion weights in the hybrid retrieval stage, replacing static retrieval parameters with empirically calibrated strategies. Finally, multi-agent collaborative reasoning enhances robustness by combining diverse proposal generation with validation-based selection.
 
-MARS introduces four major advancements:
-
-1. **Agent-driven semantic enrichment** reduces the semantic gap between mashups and APIs from 0.7311 to 0.6448 (Δ=0.0863, measured by Jensen–Shannon divergence), while baselines show negligible improvement.
-2. **Structure-aware fine-tuning** learns compositional API patterns via contrastive learning, capturing dependencies beyond surface semantics.
-3. **Data-driven retrieval optimization** replaces static fusion weights with adaptive, learned parameters validated on real data.
-4. **Multi-agent collaborative reasoning** implements a closed-loop “recommend–validate–revise” mechanism, ensuring consensus and factual consistency across agents.
-
-Experiments on the **ProgrammableWeb** dataset show that MARS achieves **61.22% Recall@5**, outperforming **Native RAG (58.28%)** and **ServeNet (43.35%)**, corresponding to **5.0%** and **41.1%** relative improvements, respectively.
+Experiments on **ProgrammableWeb** dataset demonstrate that MARS consistently outperforms representative baselines, achieving **63.31% Recall@5** compared to **58.28%** for Native RAG and **43.35%** for the best traditional method (ServeNet). The results indicate that MARS provides an effective and extensible framework for improving mashup-oriented service recommendation. Our code is available at https://github.com/banirabbit/mars.
 
 ---
 

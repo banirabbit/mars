@@ -4,9 +4,11 @@ Handles document embedding, retrieval, and reranking operations.
 """
 
 import os
+import math
 from typing import List, Dict, Any, Tuple
 from tqdm import tqdm
 import jieba
+from collections import Counter
 
 from sentence_transformers import SentenceTransformer
 from langchain_community.vectorstores import FAISS
@@ -21,6 +23,20 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from .config import Config
 from .utils import rank_apis_by_frequency, validate_api_object
+
+
+def normalize_freq(count: int, max_count: int, use_log: bool = True) -> float:
+    """Normalize frequency count to [0,1]."""
+    if max_count <= 0:
+        return 0.0
+    if use_log:
+        return math.log1p(count) / math.log1p(max_count)
+    return count / max_count
+
+
+def normalize_cosine(cos_sim: float) -> float:
+    """Map cosine similarity from [-1,1] to [0,1]."""
+    return (cos_sim + 1.0) / 2.0
 
 
 class RAGService:
@@ -230,33 +246,33 @@ class RAGService:
         
         return rerank_answers
     
-    def extract_apis_from_mashups(self, mashup_results: List[List[str]], 
+    def extract_apis_from_mashups(self, mashup_results: List[List[str]],
                                  all_mashups: List[Dict[str, Any]]) -> List[List[Dict[str, Any]]]:
         """
-        Extract and rank APIs from retrieved mashups.
-        
+        Extract and rank APIs from retrieved mashups with frequency count.
+
         Args:
             mashup_results (List[List[str]]): Retrieved mashup titles for each query
             all_mashups (List[Dict[str, Any]]): Complete mashup dataset
-            
+
         Returns:
-            List[List[Dict[str, Any]]]: Ranked API lists for each query
+            List[List[Dict[str, Any]]]: Ranked API lists with frequency_count for each query
         """
         print("Extracting APIs from mashups...")
         api_results = []
-        
+
         # Create mashup lookup dictionary for efficient access
         mashup_lookup = {mashup["title"]: mashup for mashup in all_mashups}
-        
+
         for mashup_titles in mashup_results:
             api_doc_set = []
-            
+
             # Extract APIs from each retrieved mashup
             for title in mashup_titles:
                 mashup = mashup_lookup.get(title)
                 if not mashup:
                     continue
-                
+
                 if "related_apis" in mashup and mashup["related_apis"]:
                     for api in mashup["related_apis"]:
                         if validate_api_object(api):
@@ -265,81 +281,103 @@ class RAGService:
                                 "tags": api["tags"],
                             }
                             api_doc_set.append(api_json)
-            
-            # Rank APIs by frequency and remove duplicates
-            sorted_apis = rank_apis_by_frequency(api_doc_set)
+
+            # Count frequency of each API title
+            title_counts = Counter(obj["title"] for obj in api_doc_set)
+
+            # Remove duplicates while preserving first occurrence
+            unique_objects = {}
+            for obj in api_doc_set:
+                if obj["title"] not in unique_objects:
+                    unique_objects[obj["title"]] = obj
+
+            # Sort by frequency (descending)
+            sorted_apis = sorted(
+                unique_objects.values(),
+                key=lambda x: title_counts[x["title"]],
+                reverse=True,
+            )
+
+            # Add frequency_count to each API
+            for api in sorted_apis:
+                api["frequency_count"] = int(title_counts[api["title"]])
+
             api_results.append(sorted_apis)
-        
+
         return api_results
     
-    def rerank_apis_by_similarity(self, api_results: List[List[Dict[str, Any]]], 
+    def rerank_apis_by_similarity(self, api_results: List[List[Dict[str, Any]]],
                                  queries: List[Dict[str, Any]]) -> List[List[Dict[str, Any]]]:
         """
-        Rerank APIs based on tag similarity with query categories and tags.
-        
+        Rerank APIs using composite score (similarity + frequency).
+
         Args:
             api_results (List[List[Dict[str, Any]]]): API results from mashup retrieval
             queries (List[Dict[str, Any]]): Original query objects with categories and tags
-            
+
         Returns:
-            List[List[Dict[str, Any]]]: Reranked API results
+            List[List[Dict[str, Any]]]: Reranked API results using composite scoring
         """
-        print("Reranking APIs by similarity...")
+        print("Reranking APIs with composite scoring (similarity + frequency)...")
         final_results = []
-        
+
+        # Get reranking parameters from config
+        lambda_sim = getattr(self.config.retrieval, 'lambda_sim', 0.5)
+        use_log_freq = getattr(self.config.retrieval, 'use_log_freq', True)
+        top_return = getattr(self.config.retrieval, 'top_return', 50)
+
         for index, api_doc_set in enumerate(tqdm(api_results, desc="Reranking APIs")):
             if len(api_doc_set) == 0:
                 final_results.append([])
                 continue
-            
+
             # Get query categories and tags
             query = queries[index]
             categories = query.get("categories", [])
             tags = query.get("tags", [])
-            
+
             # Combine categories and tags for embedding
             query_text = ", ".join(categories + tags)
-            
+
             if not query_text.strip():
-                # If no categories/tags, return original ranking
-                final_results.append(api_doc_set[:self.config.retrieval.final_api_limit])
+                # If no categories/tags, return top N by frequency only
+                final_results.append(api_doc_set[:top_return])
                 continue
-            
+
             # Generate embedding for query
             query_embedding = self.api_embed_model.encode(query_text)
-            
-            # Calculate similarity scores for APIs
-            similarity_scores = []
+
+            # Find max frequency for normalization
+            max_count = max((api.get("frequency_count", 0) for api in api_doc_set), default=0)
+
+            # Calculate composite scores
+            scored_apis = []
             for api_doc in api_doc_set:
+                # Calculate similarity score
                 api_tags_text = ", ".join(api_doc.get("tags", []))
-                
                 if api_tags_text.strip():
                     api_embedding = self.api_embed_model.encode(api_tags_text)
-                    similarity = cosine_similarity([query_embedding], [api_embedding])[0][0]
+                    cos_sim = cosine_similarity([query_embedding], [api_embedding])[0][0]
+                    sim_score = normalize_cosine(float(cos_sim))  # [0,1]
                 else:
-                    similarity = 0.0
-                
-                similarity_scores.append((api_doc, similarity))
-            
-            # Sort by similarity and combine with frequency-based ranking
-            sorted_by_similarity = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
-            
-            # Take top APIs by frequency (ordered by mashup retrieval)
-            ordered_apis = api_doc_set[:self.config.retrieval.ordered_apis_limit]
-            
-            # Add top APIs by similarity that aren't already in ordered list
-            ordered_titles = {api["title"] for api in ordered_apis}
-            similarity_apis = [
-                api[0] for api in sorted_by_similarity 
-                if api[0]["title"] not in ordered_titles
-            ][:self.config.retrieval.similarity_top_n]
-            
-            # Combine and limit final results
-            final_api_list = ordered_apis + similarity_apis
-            final_api_list = final_api_list[:self.config.retrieval.final_api_limit]
-            
+                    sim_score = 0.0
+
+                # Calculate frequency score
+                freq_count = int(api_doc.get("frequency_count", 0))
+                freq_score = normalize_freq(freq_count, max_count, use_log=use_log_freq)  # [0,1]
+
+                # Composite score
+                composite_score = lambda_sim * sim_score + (1.0 - lambda_sim) * freq_score
+
+                scored_apis.append((api_doc, composite_score))
+
+            # Sort by composite score (descending)
+            scored_apis.sort(key=lambda x: x[1], reverse=True)
+
+            # Take top N APIs
+            final_api_list = [api[0] for api in scored_apis][:top_return]
             final_results.append(final_api_list)
-        
+
         return final_results
     
     def run_rag_pipeline(self, mashups: List[Dict[str, Any]], 

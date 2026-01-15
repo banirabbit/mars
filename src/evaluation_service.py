@@ -129,7 +129,7 @@ class EvaluationLogger:
     def _load_or_create_log(self) -> Dict[str, Any]:
         """
         Load existing log file or create new log structure.
-        
+
         Returns:
             Dict[str, Any]: Log data structure
         """
@@ -138,7 +138,7 @@ class EvaluationLogger:
             if log_data is not None:
                 print(f"Loaded existing log from {self.log_file_path}")
                 return log_data
-        
+
         # Create new log structure
         print(f"Creating new log file at {self.log_file_path}")
         return {
@@ -147,7 +147,9 @@ class EvaluationLogger:
             "llm_truth_num": 0,
             "all_num": 0,
             "total_ndcg": 0.0,
-            "reco_apis": []
+            "reco_apis": [],
+            "question_logs": [],  # New: detailed per-question logs
+            "averages": {}  # New: average statistics
         }
     
     def get_resume_state(self) -> Tuple[int, int, int, int, float, List[Any]]:
@@ -168,11 +170,12 @@ class EvaluationLogger:
         )
     
     def update_state(self, index: int, hallucinations: int, correct_predictions: int,
-                    total_ground_truth: int, total_ndcg: float, 
-                    recommendations: List[Any]) -> None:
+                    total_ground_truth: int, total_ndcg: float,
+                    recommendations: List[Any],
+                    question_log: Optional[Dict[str, Any]] = None) -> None:
         """
         Update evaluation state and save to log file.
-        
+
         Args:
             index (int): Current processing index
             hallucinations (int): Total hallucinations so far
@@ -180,6 +183,7 @@ class EvaluationLogger:
             total_ground_truth (int): Total ground truth items so far
             total_ndcg (float): Total NDCG score so far
             recommendations (List[Any]): All recommendations so far
+            question_log (Optional[Dict[str, Any]]): Detailed log for this question
         """
         self.log_data.update({
             "last_index": index + 1,
@@ -189,7 +193,13 @@ class EvaluationLogger:
             "total_ndcg": total_ndcg,
             "reco_apis": recommendations
         })
-        
+
+        # Add question log if provided
+        if question_log is not None:
+            if "question_logs" not in self.log_data:
+                self.log_data["question_logs"] = []
+            self.log_data["question_logs"].append(question_log)
+
         # Save to file
         save_json_file(self.log_data, self.log_file_path)
     
@@ -359,32 +369,56 @@ class EvaluationService:
         
         for index in range(start_index, len(questions)):
             pbar.update(1)
-            
+
             question = questions[index]
             candidates = candidate_api_sets[index] if index < len(candidate_api_sets) else []
-            
-            # Generate recommendations
-            recommendations = recommendation_function(question, candidates)
+
+            # Generate recommendations (may return dict with call_logs, etc.)
+            result = recommendation_function(question, candidates)
+
+            # Extract recommendations - handle both dict and list returns
+            if isinstance(result, dict):
+                recommendations = result.get("related_apis", [])
+                # Extract detailed call logs
+                call_logs = result.get("call_logs", [])
+                total_time = result.get("total_time", 0.0)
+                total_tokens = result.get("total_tokens", 0)
+                iterations = result.get("iterations", 0)
+
+                # Create question log entry
+                question_log = {
+                    "index": index,
+                    "title": question.get("title", f"Question {index}"),
+                    "total_time_sec": total_time,
+                    "total_tokens": total_tokens,
+                    "iterations": iterations,
+                    "calls": call_logs
+                }
+            else:
+                recommendations = result if isinstance(result, list) else []
+                question_log = None
+
             all_recommendations.append(recommendations)
-            
+
             # Extract ground truth and calculate metrics
             ground_truth = self.extract_ground_truth_apis(question)
             correct, hallucinations, ndcg = self.calculate_single_evaluation(
                 recommendations, ground_truth, valid_api_titles
             )
-            
+
             # Update totals
             total_correct += correct
             total_hallucinations += hallucinations
             total_ground_truth += len(ground_truth)
             total_ndcg += ndcg
-            
-            # Log progress
+
+            # Log progress with question-level details
             self.logger.update_state(
                 index, total_hallucinations, total_correct,
-                total_ground_truth, total_ndcg, all_recommendations
+                total_ground_truth, total_ndcg, all_recommendations,
+                question_log=question_log
             )
-            
+
             # Print progress info
             if (index + 1) % 10 == 0:
                 current_precision = total_correct / ((index + 1) * self.config.evaluation.llm_predict_limit)
@@ -392,8 +426,41 @@ class EvaluationService:
                 print(f"Progress: {index + 1}/{len(questions)}, "
                       f"Precision: {current_precision:.4f}, "
                       f"Recall: {current_recall:.4f}")
-        
+
         pbar.close()
+
+        # Calculate average statistics from question logs
+        question_logs = self.logger.log_data.get("question_logs", [])
+        if question_logs:
+            num_questions = len(question_logs)
+            avg_time = sum(q.get("total_time_sec", 0.0) for q in question_logs) / num_questions
+            avg_tokens = sum(q.get("total_tokens", 0) for q in question_logs) / num_questions
+            avg_iterations = sum(q.get("iterations", 0) for q in question_logs) / num_questions
+
+            # Calculate average per-call statistics
+            all_calls = [call for q in question_logs for call in q.get("calls", [])]
+            if all_calls:
+                avg_call_time = sum(c.get("duration_sec", 0.0) for c in all_calls) / len(all_calls)
+                avg_call_tokens = sum(c.get("total_tokens", 0) for c in all_calls) / len(all_calls)
+
+                averages = {
+                    "avg_question_time_sec": avg_time,
+                    "avg_question_tokens": avg_tokens,
+                    "avg_iterations": avg_iterations,
+                    "avg_call_time_sec": avg_call_time,
+                    "avg_call_tokens": avg_call_tokens,
+                    "total_calls": len(all_calls)
+                }
+            else:
+                averages = {
+                    "avg_question_time_sec": avg_time,
+                    "avg_question_tokens": avg_tokens,
+                    "avg_iterations": avg_iterations
+                }
+
+            # Save averages to log
+            self.logger.log_data["averages"] = averages
+            save_json_file(self.logger.log_data, self.logger.log_file_path)
         
         # Calculate final metrics
         total_predictions = len(questions) * self.config.evaluation.llm_predict_limit

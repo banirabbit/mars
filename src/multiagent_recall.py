@@ -3,11 +3,30 @@
 import ast
 import json
 import re
+import time
 from typing import Dict, List, Tuple, TypedDict
 from langgraph.graph import StateGraph, END
 import os
 from langchain_core.runnables import RunnableLambda
 from openai import OpenAI
+
+# Default number of APIs to recommend in prompt/output
+DEFAULT_TOP_K = 10
+
+# Review prompt for picking the best option
+REVIEW_PROMPT = """You are a strict reviewer selecting the best API combination.
+
+Rules:
+- Compare the options RELATIVELY.
+- Do NOT count or compare quantities.
+- Do NOT propose new APIs.
+- Do NOT suggest improvements.
+- Judge by combined semantic coverage of the mashup requirements.
+- Choose the best achievable option within the candidate set.
+
+Output ONLY JSON:
+{"best_index": <int>, "confidence": <0..1>}
+"""
 
 # Global variables for OpenAI client and model - will be initialized by setup_llm_client()
 CLIENT = None
@@ -26,17 +45,25 @@ def setup_llm_client(base_url, api_key, model_name, max_retry_count=5):
     MAX_RETRY_COUNT = max_retry_count
 
 
+def _extract_usage(completion):
+    usage = getattr(completion, "usage", None)
+    prompt_tokens = getattr(usage, "prompt_tokens", 0) or 0
+    completion_tokens = getattr(usage, "completion_tokens", 0) or 0
+    total_tokens = getattr(usage, "total_tokens", 0) or (
+        prompt_tokens + completion_tokens
+    )
+    return prompt_tokens, completion_tokens, total_tokens
+
+
 def select_top_apis(state):
+    """
+    一次性生成多个候选方案（M=3），不 retry
+    """
     apis = state["candidate_apis"]
     mashups = state["mashup"]
     core_prompt = state["prompt"]
-    feedback = state.get("feedback_reason", "")
 
     prompt_payload = {"mashup": mashups, "candidate_apis": apis}
-
-    if feedback:
-        prompt_payload["feedback"] = feedback
-
     user_prompt = json.dumps(prompt_payload, ensure_ascii=False)
 
     messages = [
@@ -47,38 +74,56 @@ def select_top_apis(state):
     if CLIENT is None or MODEL is None:
         raise RuntimeError("LLM client not initialized. Call setup_llm_client() first.")
 
-    completion = CLIENT.chat.completions.create(
-        model=MODEL, messages=messages, stream=False
+    options = []
+    call_logs = list(state.get("call_logs", []))
+    total_duration = 0.0
+    total_prompt_tokens = 0
+    total_completion_tokens = 0
+    total_tokens_sum = 0
+
+    # 生成 3 个不同的方案
+    for i in range(3):
+        start_time = time.time()
+        completion = CLIENT.chat.completions.create(
+            model=MODEL,
+            messages=messages,
+            temperature=0.7,  # 保证多样性
+            stream=False
+        )
+        duration = time.time() - start_time
+        prompt_tokens, completion_tokens, total_tokens = _extract_usage(completion)
+
+        response = completion.choices[0].message.content
+        print("options:")
+        print(f"[Option {i}]:", response)
+
+        options.append(process_json(response))
+
+        total_duration += duration
+        total_prompt_tokens += prompt_tokens
+        total_completion_tokens += completion_tokens
+        total_tokens_sum += total_tokens
+
+    call_logs.append(
+        {
+            "stage": "select_top_apis",
+            "num_options": 3,
+            "duration_sec": total_duration,
+            "prompt_tokens": total_prompt_tokens,
+            "completion_tokens": total_completion_tokens,
+            "total_tokens": total_tokens_sum,
+        }
     )
 
-    response = completion.choices[0].message.content
-    print(response)
     return {
         **state,
-        "related_apis": process_json(response),
-        "feedback_reason": "",  # 清除旧的反馈
+        "related_apis_options": options,  # 存储多个方案
+        "call_logs": call_logs,
+        "total_time": state.get("total_time", 0.0) + total_duration,
+        "total_tokens": state.get("total_tokens", 0) + total_tokens_sum,
+        "iterations": state.get("iterations", 0) + 1,
     }
 
-
-# def process_json(text):
-#     pattern = r"```json(.*?)```"
-#     matches = re.findall(pattern, text, re.DOTALL)
-#     for match in matches:
-#         try:
-#             json_data = json.loads(match.strip())  # 转换为 JSON 对象
-#             # 检查是否存在 "related_apis" 键
-#             if "related_apis" not in json_data:
-#                 print("解析的 JSON 缺少 'related_apis' 键")
-#                 return []
-#             return json_data["related_apis"]
-#         except json.JSONDecodeError as e:
-#             print("解析失败:", e)
-#             return []
-#         except Exception as e:
-#             print(f"没有找到JSON的开始或结束符: {e}")
-#             return []
-#     print("没有找到任何 JSON 代码块")
-#     return []
 
 def process_json(text: str):
     """
@@ -166,18 +211,20 @@ def process_json(text: str):
     return out
 
 
-def check_recommendation_validity(state) -> Tuple[Dict, str]:
+def review_pick_best(state):
+    """
+    从多个 API 方案中选择最优的一个
+    """
     mashup = state["mashup"]
     candidates = state["candidate_apis"]
-    recommended = state["related_apis"]
+    options = state["related_apis_options"]
     prompt = state["prompt"]
-    retry_count = state.get("retry_count", 0)
 
     user_input = json.dumps(
         {
             "mashup": mashup,
             "candidate_apis": candidates,
-            "recommended_apis": recommended,
+            "options": options,
         },
         ensure_ascii=False,
     )
@@ -185,15 +232,7 @@ def check_recommendation_validity(state) -> Tuple[Dict, str]:
     messages = [
         {
             "role": "system",
-            "content": (
-                prompt
-                + "\nYou are an expert assistant evaluating the quality of API recommendations."
-                "\nPlease judge whether the recommended APIs satisfy the mashup's core requirements."
-                "\nIf the recommendations are valid, respond in the following JSON format:\n"
-                '```json\n{"valid": true}\n```\n'
-                "If the recommendations are invalid, respond as:\n"
-                '```json\n{"valid": false, "reason": "<brief explanation why the APIs do not meet the requirements>"}\n```\n'
-            ),
+            "content": prompt + "\n" + REVIEW_PROMPT,
         },
         {"role": "user", "content": user_input},
     ]
@@ -201,85 +240,102 @@ def check_recommendation_validity(state) -> Tuple[Dict, str]:
     if CLIENT is None or MODEL is None:
         raise RuntimeError("LLM client not initialized. Call setup_llm_client() first.")
 
+    start_time = time.time()
     completion = CLIENT.chat.completions.create(
-        model=MODEL, messages=messages, stream=False
-    )
-
-    response = completion.choices[0].message.content.strip()
-    print("[🔍 validity check response]:", response)
-
-    # 提取模型输出的 JSON
-    pattern = r"```json(.*?)```"
-    match = re.search(pattern, response, re.DOTALL)
-    if match:
-        try:
-            result = json.loads(match.group(1).strip())
-            if result.get("valid") is True:
-                return {**state, "is_retry": False}
-            else:
-                reason = result.get(
-                    "reason",
-                    "The recommended APIs do not match the mashup requirements.",
-                )
-                return {
-                    **state,
-                    "is_retry": True,
-                    "retry_count": retry_count + 1,
-                    "feedback_reason": reason,
-                }
-        except Exception as e:
-            print("[❌ JSON解析失败]:", e)
-            return {
-                **state,
-                "is_retry": True,
-                "retry_count": retry_count + 1,
-                "feedback_reason": "Fail to parse JSON.",
-            }
-
-    # fallback，如果没有正确格式，就默认结束
-    return {**state, "is_retry": False}
-
-def revise_prompt(state):
-    mashup = state["mashup"]
-    original_prompt = state["prompt"]
-    feedback = state.get("feedback_reason", "")
-    previous_apis = state.get("related_apis", [])
-
-    messages = [
-        {"role": "system", "content": "You are an expert in writing prompts for API selection."},
-        {"role": "user", "content": (
-            f"The original prompt was:\n{original_prompt}\n\n"
-            f"The model failed to generate useful APIs. Feedback:\n{feedback}\n\n"
-            f"The mashup description and categories are {mashup}"
-            f"The previous APIs were:\n{previous_apis}\n\n"
-            f"Please revise the original prompt to be more helpful, specific, or constrained."
-            f"Please preserve the structure of the original prompt while improving the clarity or completeness to better match the mashup's requirements."
-            f"Output only the revised prompt."
-        )}
-    ]
-
-    if CLIENT is None or MODEL is None:
-        raise RuntimeError("LLM client not initialized. Call setup_llm_client() first.")
-
-    response = CLIENT.chat.completions.create(
         model=MODEL,
-        messages=messages
+        messages=messages,
+        temperature=0.0,  # 审查必须 deterministic
+        stream=False
     )
+    duration = time.time() - start_time
+    prompt_tokens, completion_tokens, total_tokens = _extract_usage(completion)
 
-    new_prompt = response.choices[0].message.content.strip()
-    print("[🔧 prompt updated]:", new_prompt)
+    response = completion.choices[0].message.content
+    print("[🔍 review_pick_best response]:", response)
+
+    # 解析 JSON
+    best_idx = 0
+    confidence = 0.0
+    try:
+        match = re.search(r"\{.*\}", response, re.DOTALL)
+        if match:
+            result = json.loads(match.group())
+            best_idx = int(result.get("best_index", 0))
+            confidence = float(result.get("confidence", 0.0))
+        else:
+            print("[⚠️ 未找到 JSON，使用默认 index=0]")
+    except Exception as e:
+        print(f"[❌ 解析失败: {e}，使用默认 index=0]")
+
+    # 确保 best_idx 在有效范围内
+    best_idx = max(0, min(best_idx, len(options) - 1))
+
+    call_logs = list(state.get("call_logs", []))
+    call_logs.append(
+        {
+            "stage": "review_pick_best",
+            "duration_sec": duration,
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": completion_tokens,
+            "total_tokens": total_tokens,
+            "best_index": best_idx,
+            "confidence": confidence,
+        }
+    )
 
     return {
         **state,
-        "prompt": new_prompt
+        "related_apis": options[best_idx],
+        "selected_index": best_idx,
+        "call_logs": call_logs,
+        "total_time": state.get("total_time", 0.0) + duration,
+        "total_tokens": state.get("total_tokens", 0) + total_tokens,
     }
-# step 3: 分支逻辑函数（决定跳转方向）
-def route_based_on_validity(state) -> str:
-    global MAX_RETRY_COUNT
-    if state.get("retry_count", 0) >= MAX_RETRY_COUNT:
-        print(f"[⚠️ 超过最大重试次数 {MAX_RETRY_COUNT}，终止流程]")
-        return "end"
-    return "retry" if state.get("is_retry") else "end"
+
+
+def final_sanity_checks(state):
+    """
+    本地规则兜底：
+    1. 去掉不在 candidate 里的 API（去幻觉）
+    2. 去重
+    3. 限制在 top_k 范围内
+    """
+    candidates = state["candidate_apis"]
+    recommended = state["related_apis"]
+    top_k = state.get("top_k", DEFAULT_TOP_K)
+
+    # 提取候选 API 的 title 集合
+    candidate_titles = set()
+    for api in candidates:
+        if isinstance(api, dict) and 'title' in api:
+            candidate_titles.add(api['title'])
+
+    # 清洗推荐列表
+    cleaned = []
+    seen = set()
+
+    for api in recommended:
+        # 处理不同格式的 API
+        title = ""
+        if isinstance(api, dict) and 'title' in api:
+            title = api['title']
+        elif isinstance(api, str):
+            title = api
+
+        # 只保留在候选集中的、未见过的 API
+        if title and title in candidate_titles and title not in seen:
+            cleaned.append(title)
+            seen.add(title)
+
+    # 限制在 top_k 范围内
+    cleaned = cleaned[:top_k]
+
+    print(f"[✅ final_sanity_checks] 清洗后: {len(cleaned)} 个 API")
+
+    return {
+        **state,
+        "related_apis": cleaned,
+    }
 
 
 # 定义状态结构
@@ -287,43 +343,54 @@ class WorkflowState(TypedDict):
     mashup: str
     candidate_apis: List[Dict]
     related_apis: List[str]
+    related_apis_options: List[List[str]]  # 多个候选方案
+    selected_index: int  # 选中的方案索引
     prompt: str
-    is_retry: bool
-    retry_count: int
+    top_k: int
+    total_time: float
+    total_tokens: int
+    call_logs: List[Dict]
+    iterations: int
 
 
-def run_multiagent_flow(mashup_description, candidate_apis, prompt):
+def run_multiagent_flow(
+    mashup_description, candidate_apis, prompt, top_k: int = DEFAULT_TOP_K
+):
+    """
+    新的多智能体流程：
+    select_top_apis → review_pick_best → final_sanity_checks → END
+    """
     workflow = StateGraph(state_schema=WorkflowState)
 
+    # 添加三个节点
     workflow.add_node("select_top_apis", select_top_apis)
-    # workflow.add_node("revise_prompt", revise_prompt)
-    workflow.add_node(
-        "check_recommendation_validity", RunnableLambda(check_recommendation_validity)
-    )
+    workflow.add_node("review_pick_best", review_pick_best)
+    workflow.add_node("final_sanity_checks", final_sanity_checks)
 
+    # 设置入口点
     workflow.set_entry_point("select_top_apis")
 
-    # 多路分支根据校验结果跳转
-    workflow.add_edge("select_top_apis", "check_recommendation_validity")
-    workflow.add_conditional_edges("check_recommendation_validity", route_based_on_validity, {
-    "retry": "select_top_apis",
-    "end": END,
-    })
-    # workflow.add_conditional_edges("check_recommendation_validity", route_based_on_validity, {
-    # "retry": "revise_prompt",
-    # "end": END,
-    # })
-    # workflow.add_edge("revise_prompt", "select_top_apis")
+    # 线性流程，无分支
+    workflow.add_edge("select_top_apis", "review_pick_best")
+    workflow.add_edge("review_pick_best", "final_sanity_checks")
+    workflow.add_edge("final_sanity_checks", END)
 
     graph = workflow.compile()
+
+    prompt_with_top_k = prompt.replace("{{k}}", str(top_k))
 
     input_data = {
         "mashup": mashup_description,
         "candidate_apis": candidate_apis,
-        "prompt": prompt,
+        "prompt": prompt_with_top_k,
         "related_apis": [],
-        "is_retry": False,
-        "retry_count": 0,
+        "related_apis_options": [],
+        "selected_index": 0,
+        "top_k": top_k,
+        "total_time": 0.0,
+        "total_tokens": 0,
+        "call_logs": [],
+        "iterations": 0,
     }
 
     result = graph.invoke(input_data)
