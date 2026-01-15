@@ -1,6 +1,6 @@
 # 🧠 MARS: Multi-Agent Collaborative Reasoning Framework for Service Recommendation
 
-[🇨🇳 中文说明 / Chinese Version](./README_CN.md)
+[🇨🇳 中文说明 / Chinese Version](./README-CN.md)
 
 ### 📘 Abstract
 
